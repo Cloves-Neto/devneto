@@ -33,6 +33,7 @@ body{
 /* Link fixo lateral */
 .links-fix{
     position: fixed;
+    z-index: 10;
     bottom: 50px;
     left: 0;
 }
