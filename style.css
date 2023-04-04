@@ -14,17 +14,19 @@
 
 /* Definição padrão e Reset */
 *{
+    margin: 0;
+    padding: 0; 
     font-family: 'Poppins', sans-serif;
     list-style: none;
-}
-a{
-    color: white;
     text-decoration: none;
 }
 
+html{
+    background-color: black;
+}
 body{
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0px auto;
     overflow-x: hidden;
     position: relative;
 }
@@ -107,6 +109,12 @@ header .menu-lista{
 
 header .menu-lista li{
     padding: 5px 10px;
+    margin-top: 5px;
+}
+header .menu-lista li a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 header .menu-lista li:hover{
@@ -115,9 +123,12 @@ header .menu-lista li:hover{
 }
 header .menu-lista li:hover a{
     color: blueviolet;
+    font-weight: bold;
 }
 
-
+.download{
+    text-decoration: none;
+}
 .download:hover{
     background-color: white;
     color: blueviolet;
@@ -160,13 +171,12 @@ header .menu-lista li:hover a{
 
 
 h2.digitando{
-    /* color: blueviolet; */
     font-size: 3rem;
     margin-top: -10px;
+    color: blueviolet !important;
+    font-weight: bolder;
 }
-h2.digitando:hover{
-    color: blueviolet;
-}
+
 
 .section-cv div p{
     font-weight: 200;
