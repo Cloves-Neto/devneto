@@ -28,6 +28,47 @@ body{
     overflow-x: hidden;
     position: relative;
 }
+/* Link fixo lateral */
+.links-fix{
+    position: fixed;
+    bottom: 50px;
+    left: 0;
+}
+.links-fix ul{
+    width: 40px;
+    padding: 5px;
+    height: 100px;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.links-fix ul li{
+    width: 25px;
+    height: 30px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    padding: 0;
+
+}
+
+.links-fix ul li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.links-fix ul li a svg{
+    color: black;
+}
+.links-fix ul li:hover a svg{
+    color: blueviolet;
+}
+
 
 /* header */
 
@@ -119,6 +160,11 @@ header .menu-lista li:hover a{
 
 
 h2.digitando{
+    /* color: blueviolet; */
+    font-size: 3rem;
+    margin-top: -10px;
+}
+h2.digitando:hover{
     color: blueviolet;
 }
 
