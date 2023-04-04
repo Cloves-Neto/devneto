@@ -5,186 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devneto</title>
-    <style>
-        *, *::after, *::before{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        ul, li{
-            list-style: none;
-        }
-        a{
-            color: black;
-            text-decoration: none;
-        }
-        a:visited{
-            color: black;
-        }
-
-        html, body{
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            overflow-y: scroll;
-        }
-        .container{
-            min-width: 800px;
-            max-width: 1480px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        header{
-            width: 100%;
-            height: 60px;
-            background-color: rgb(0, 0, 0);
-            position: fixed;
-            top: 0;
-            left: 0;
-
-            
-        }
-        header nav ul{
-            display: flex;
-            flex-direction: row;
-        }
-        header a{
-            color: white !important;   
-        }
-
-        nav.float-btn{
-            position: fixed;
-            bottom: 10px;
-            left: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-        }
-        main.section-content{
-            width: 100%;
-            margin-top: 65px;
-        }
-        main.section-content > section{
-            width: 100%;
-            height: 100vh;
-        }
-
-        /* Sessão - Home | Intrução */
-        #home{
-            padding: 5px;
-            background-color: aquamarine;
-            display: flex;
-            flex-direction: row;
-        }
-        #home > div{
-            width: 100%;
-            height: 100%;
-            margin: 2px;
-            background-color: tomato;
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    
     <header>
-        <nav>
-            <ul class="list-menu">
-                <li class="item-menu">
-                    <a href="#home">Home</a>
-                </li>
-
-                <li class="item-menu">
-                    <a href="#sobre">Sobre</a>
-                </li>
-                
-                <li class="item-menu">
-                    <a href="#servico">Serviços</a>
-                </li>
-                
-                <li>
-                    <a href="#">
-                        <!-- <img src="" alt=""> -->
-                        Imagem
-                    </a>
-                </li>
-
-                <li class="item-menu">
-                    <a href="#projetos">Projetos</a>
-                </li>
-                
-                <li class="item-menu">
-                    <a href="#contato">Contato</a>
-                </li>
-
-                <li class="item-menu">
-                    <a href="#">Curriculo</a>
-                </li>
-            </ul>
-        </nav>
+            <img src="" alt="logo DevNeto">
+            <nav>
+                <ul class="menu-lista">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Resume</a></li>
+                    <li><a href="#">Portifolio</a></li>
+                    <li><a href="#">Colabs</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
     </header>
-    <nav class="float-btn">
-        <ul>
-            <li>
-                <a href="#" class="circle-btn">1</a>
-            </li>
+    <section aria-label="sessao inicial download curriculo Cloves Neto" class="section section-cv div">
+        <div>
+            <h2>Hi there! I'm  <strong> Cloves<span> Neto</span></strong></h2>
+            <h2 class="digitando">Web developer and Ui Design</h2>
+            <p>Lorem ipsum dolor sit amet 
+                consectetur adipisicing elit. Non recusandae dolore 
+                commodi ea, beatae sequi? Sit nesciunt illo eius unde inventore quam soluta, 
+                id commodi temporibus eveniet obcaecati eaque nihil?
+            </p>
+            <a href="#" class="download">Download CV</a>
+        </div>
+        <img src="" alt="imagem ilustrativa introdução">
+    </section>
 
-            <li>
-                <a href="#" class="circle-btn">2</a>
-            </li>
-            
-            <li>
-                <a href="#" class="circle-btn">3</a>
-            </li>
-        </ul>
-    </nav>
-    <main class="section-content">
-        <section id="home">
-            <div class="left">
-                <aside>
-                    <h2>Olá,</h2>
-                    <h1>Eu sou <span class="troca" id="troca" name="troca">Cloves Neto</span></h1>
-                </aside>
-                <nav>
-                    <label for="linkedin">
-                        icon
-                        <input type="button" name="linkedin" id="linkedin" value="Linkedin">
-                    </label>
 
-                    <label for="github">
-                        icon
-                        <input type="button" name="github" id="github" value="Github">
-                    </label>
-                </nav>
-            </div>
-            <div class="right">
-                efeito animação
-                imagem
-            </div>
-        </section>
 
-        <section id="sobre">
-            Sobre mim
-        </section>
 
-        <section id="servico">
-            Serviços
-        </section>
 
-        <section id="projetos">
-            Projetos
-        </section>
 
-        <section id="contato">
-            Contato
-        </section>
-    </main>
-    <footer>
-        meu rodapé
-    </footer>
-    </div>
+
+
+
+<script src="script.js"></script>    
 </body>
 </html>
