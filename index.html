@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
-
 </head>
 <body>
      <!-- Navegação primaria - menu fixo de ancoragem das sessões do site-->
@@ -66,9 +65,10 @@
     </section>
      <!-- Conteúdo principal do site -->
      <main>
-        <article aria-label="sessão sobre mim" class="sobre">
+        <!-- Artigo / Sobre mim -->
+        <article aria-label="sessão sobre mim" class="sobre section-eu">
             <div class="sobre_titulo">
-                    <h1 >About me </h1>
+                    <h2 >About me </h2>
                     <p>Professional profile</p>
                     <div aria-label="sessao de botoes ">
                         <span class="mark"></span>
@@ -100,6 +100,77 @@
                     </div>
             </div>
         </article>
+        <!-- Sessão Educação e Qualificacoes -->
+        <section class="section section-resume ">
+            <div class="resume-titulo">
+                <h2>Resume</h2>
+            </div>
+            <!-- Educação -->
+            <div class="educacao">
+                <ul>
+                    <li>
+                        <h3>Titulo</h3>
+                        <small>27/10/2003 - 27/10/2006</small>
+                        <br>
+                        <p>Resumo sgasgjasdashkdkasç jndasknkasj bashdbkasnk basbb</p>
+                    </li>
+                    <li>
+                        <h3>Titulo</h3>
+                        <small>27/10/2003 - 27/10/2006</small>
+                        <br>
+                        <p>Resumo sgasgjasdashkdkasç jndasknkasj bashdbkasnk basbb</p>
+                    </li>
+                    <li>
+                        <h3>Titulo</h3>
+                        <small>27/10/2003 - 27/10/2006</small>
+                        <br>
+                        <p>Resumo sgasgjasdashkdkasç jndasknkasj bashdbkasnk basbb</p>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- Qualificações -->
+            <div class="qualificacao slider">
+                <div class="slides">
+                    <!-- RADIO BTN -->
+                    <input type="radio" name="radio-btn" id="radio1">
+                    <input type="radio" name="radio-btn" id="radio2">
+                    <input type="radio" name="radio-btn" id="radio3">
+                    <input type="radio" name="radio-btn" id="radio4">
+
+                    <!-- Card-Slides -->
+                    <div class="cardSlide um">
+                    <h4>Card 1</h4>
+                    </div>
+
+                    <div class="cardSlide dois">
+                    <h4>Card 2</h4>
+                    </div>
+
+                    <div class="cardSlide tres">
+                    <h4>Card 3</h4>
+                    </div>
+
+                    <div class="cardSlide quatro">
+                    <h4>Card 4</h4>
+                    </div>
+
+                    <!-- Autoflow -->
+                    <div class="autoflow">
+                        <div class="autobtn1"></div>
+                        <div class="autobtn2"></div>
+                        <div class="autobtn3"></div>
+                        <div class="autobtn4"></div>
+                    </div>
+                </div>
+                <div class="manual-navigation">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                    <label for="radio4" class="manual-btn"></label>
+                </div>
+            </div>
+        </section>
 
      </main>
 
