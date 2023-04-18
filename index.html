@@ -13,8 +13,15 @@
      <!-- Navegação primaria - menu fixo de ancoragem das sessões do site-->
     <header> 
             <img src="" alt="logo DevNeto">
-            <nav>
-                <ul class="menu-lista">
+            
+            <nav class="navegacao-primaria">  
+                <div id="moba" class="menu-mobile" onclick="ativar()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <ul aria-label="Menu de navegação primária" class="menu-lista">
                     <li><a href="#" translate="no" class="notranslate">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Resume</a></li>
@@ -26,7 +33,7 @@
     </header>
     <!-- Navegação secundaria - link lateral fixo -->
     <nav class="links-fix">
-        <ul>
+        <ul aria-label="Links flutuantes alinhados a esquerda com acesso as redes sociais">
             <li>
                 <a href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
@@ -67,7 +74,7 @@
      <main>
         <!-- Artigo / Sobre mim -->
         <article aria-label="sessão sobre mim" class="sobre section-eu">
-            <div class="sobre_titulo">
+            <div class="div-titulo">
                     <h2 >About me </h2>
                     <p>Professional profile</p>
                     <div aria-label="sessao de botoes ">
@@ -100,84 +107,74 @@
                     </div>
             </div>
         </article>
-        <!-- Sessão Educação e Qualificacoes -->
-        <section class="section section-resume ">
-            <div class="resume-titulo">
-                <h2>Resume</h2>
-            </div>
-            <!-- Educação -->
-            <div class="educacao">
-                <ul>
-                    <li>
-                        <h3>Titulo</h3>
-                        <small>27/10/2003 - 27/10/2006</small>
-                        <br>
-                        <p>Resumo sgasgjasdashkdkasç jndasknkasj bashdbkasnk basbb</p>
-                    </li>
-                    <li>
-                        <h3>Titulo</h3>
-                        <small>27/10/2003 - 27/10/2006</small>
-                        <br>
-                        <p>Resumo sgasgjasdashkdkasç jndasknkasj bashdbkasnk basbb</p>
-                    </li>
-                    <li>
-                        <h3>Titulo</h3>
-                        <small>27/10/2003 - 27/10/2006</small>
-                        <br>
-                        <p>Resumo sgasgjasdashkdkasç jndasknkasj bashdbkasnk basbb</p>
-                    </li>
-
-                </ul>
-            </div>
-            <!-- Qualificações -->
-            <div class="qualificacao slider">
-                <div class="slides">
-                    <!-- RADIO BTN -->
-                    <input type="radio" name="radio-btn" id="radio1">
-                    <input type="radio" name="radio-btn" id="radio2">
-                    <input type="radio" name="radio-btn" id="radio3">
-                    <input type="radio" name="radio-btn" id="radio4">
-
-                    <!-- Card-Slides -->
-                    <div class="cardSlide um">
-                    <h4>Card 1</h4>
-                    </div>
-
-                    <div class="cardSlide dois">
-                    <h4>Card 2</h4>
-                    </div>
-
-                    <div class="cardSlide tres">
-                    <h4>Card 3</h4>
-                    </div>
-
-                    <div class="cardSlide quatro">
-                    <h4>Card 4</h4>
-                    </div>
-
-                    <!-- Autoflow -->
-                    <div class="autoflow">
-                        <div class="autobtn1"></div>
-                        <div class="autobtn2"></div>
-                        <div class="autobtn3"></div>
-                        <div class="autobtn4"></div>
-                    </div>
-                </div>
-                <div class="manual-navigation">
-                    <label for="radio1" class="manual-btn"></label>
-                    <label for="radio2" class="manual-btn"></label>
-                    <label for="radio3" class="manual-btn"></label>
-                    <label for="radio4" class="manual-btn"></label>
-                </div>
-            </div>
-        </section>
-
      </main>
+
+     <!-- Resumo -->
+     <section class="resumo">
+        <div class="div-titulo">
+            <h2 >Resume</h2>
+            <p>Services and qualifications</p>
+            <div aria-label="sessao de botoes ">
+                <span class="mark"></span>
+                <span class="mark"></span>
+                <span class="mark"></span>
+            </div>
+        </div>
+
+        <div class="meus_servicos">
+            <ul>
+                <li>
+                    <ion-icon name="create"></ion-icon>
+                    <h3>Web Designer</h3>
+                    <p>BLS BLSFSKDNLSNVIDSVO cksdncbsdicvbsdo jsb cjkbascnsd  icbs cjkas c</p>
+                </li>
+
+                <li>
+                    <ion-icon name="desktop"></ion-icon>  
+                    <h3>Web Developer</h3>
+                    <p>BLS BLSFSKDNLSNVIDSVO cksdncbsdicvbsdo jsb cjkbascnsd  icbs cjkas c</p>
+                </li>
+
+                <li>
+                    <ion-icon name="camera"></ion-icon>
+                    <h3>Phothography</h3>
+                    <p>BLS BLSFSKDNLSNVIDSVO cksdncbsdicvbsdo jsb cjkbascnsd  icbs cjkas c</p>
+                </li>
+
+                <li>
+                    <ion-icon name="layers"></ion-icon>
+                    <h3>SEO Analyst</h3>
+                    <p>BLS BLSFSKDNLSNVIDSVO cksdncbsdicvbsdo jsb cjkbascnsd  icbs cjkas c</p>
+                </li>
+
+                <li>
+                    <ion-icon name="color-palette"></ion-icon>
+                    <!-- <h3>Creative and Responsive design</h3> -->
+                    <h3>UI/UX Design</h3>
+                    <p>BLS BLSFSKDNLSNVIDSVO cksdncbsdicvbsdo jsb cjkbascnsd  icbs cjkas c</p>
+                </li>
+
+                <li>
+                    <ion-icon name="construct"></ion-icon>
+                    <h3>Refactoring and Clean Code</h3>
+                    <p>BLS BLSFSKDNLSNVIDSVO cksdncbsdicvbsdo jsb cjkbascnsd  icbs cjkas c</p>
+                </li>
+            </ul>
+        </div>
+     </section>
 
 
 
 <!-- Sessão de scripts -->
 
+     <script>
+        function ativar(){
+            const menuMobile = document.getElementById('moba');
+            menuMobile.addEventListener('click', ()=>{
+                menuMobile.classList.toggle('menu-ativo');
+            })
+        }
+     </script>
     <!-- Animation Type-it (tipeitjs.com)  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js" crossorigin="anonymous"></script>
