@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded",  () => {
         speed: 200,
         // strings: ["Web Developer", "Ui Designer"],
         loop: true
-    }).type('Web Developer', {delay: 900}).delete(13)
-      .type('Ui/Ux Designer', {delay: 900})
-      .go();
+        }).type('Web Developer', {delay: 900}).delete(13)
+        .type('Ui/Ux Designer', {delay: 900})
+        .go();
   });
 
 
@@ -16,5 +16,5 @@ document.addEventListener("DOMContentLoaded",  () => {
     const menuMobile = document.getElementById('moba');
     menuMobile.addEventListener('click', ()=>{
         menuMobile.classList.toggle('menu-ativo');
-    })
+    })  
 }
