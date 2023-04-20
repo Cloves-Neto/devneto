@@ -1,3 +1,4 @@
+// Animação transição de texto com biblioteca Typeit
 document.addEventListener("DOMContentLoaded",  () => {
     new TypeIt("#digitando", {
         speed: 200,
@@ -5,5 +6,15 @@ document.addEventListener("DOMContentLoaded",  () => {
         loop: true
     }).type('Web Developer', {delay: 900}).delete(13)
       .type('Ui/Ux Designer', {delay: 900})
-        .go();
+      .go();
   });
+
+
+  // Animação menu-mobile ( Inserir Classe para estilizar)
+
+  function ativar(){
+    const menuMobile = document.getElementById('moba');
+    menuMobile.addEventListener('click', ()=>{
+        menuMobile.classList.toggle('menu-ativo');
+    })
+}

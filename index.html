@@ -122,7 +122,7 @@
         </div>
 
         <div class="meus_servicos">
-            <ul>
+            <ul class="lista-servico" aria-label="lista de serviços que eu ofereço">
                 <li>
                     <ion-icon name="create"></ion-icon>
                     <h3>Web Designer</h3>
@@ -161,20 +161,90 @@
                 </li>
             </ul>
         </div>
+
+        <div class="meu_resumo">
+            <div class="skills">
+                <h3>Skills</h3>
+                <ul class="minhas-skills">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JS</li>
+                    <li>PHP</li>
+                    <li>MYSQL/SQL</li>
+                    <li>Boostrap</li>
+                    <li>Tailwind</li>
+                </ul>
+            </div>
+        
+            <div id="carouselExampleCaptions" class="carousel slide education">
+
+                <ul class="carousel-inner">
+
+                    <li class="carousel-item active">
+                        <h4>Engenharia de Software</h4>
+                        <small><span>Cursando</span> - 16/12/2026</small>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                            Maxime eligendi dolorum
+                            eaque tempore cum illum neque deleniti odit voluptatem
+                            qui provident, explicabo error repudiandae fugit ipsum 
+                            accusantium quis beatae voluptatum?
+                        </p>
+                    </li>
+    
+                    <li class="carousel-item ">
+                        <h4>Tecnico em informática</h4>
+                        <small><span>Cursando</span> - 20/06/2023</small>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                            Maxime eligendi dolorum
+                            eaque tempore cum illum neque deleniti odit voluptatem
+                            qui provident, explicabo error repudiandae fugit ipsum 
+                            accusantium quis beatae voluptatum?
+                        </p>
+                    </li>
+    
+                    <li class="carousel-item ">
+                        <h4>Técnico em Administração</h4>
+                        <small><span>ETEC Juscelino K. | Concluído</span></small>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                            Maxime eligendi dolorum
+                            eaque tempore cum illum neque deleniti odit voluptatem
+                            qui provident, explicabo error repudiandae fugit ipsum 
+                            accusantium quis beatae voluptatum?
+                        </p>
+                    </li>
+    
+                    <li class="carousel-item ">
+                        <h4>Curso de Photoshop - Introdutório</h4>
+                        <small>Escola SAGA | Concluído</small>
+                        <p>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                            Maxime eligendi dolorum
+                            eaque tempore cum illum neque deleniti odit voluptatem
+                            qui provident, explicabo error repudiandae fugit ipsum 
+                            accusantium quis beatae voluptatum?
+                        </p>
+                    </li>
+
+                </ul>
+
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                </div>
+
+            </div>
+        </div>
      </section>
 
 
 
 <!-- Sessão de scripts -->
 
-     <script>
-        function ativar(){
-            const menuMobile = document.getElementById('moba');
-            menuMobile.addEventListener('click', ()=>{
-                menuMobile.classList.toggle('menu-ativo');
-            })
-        }
-     </script>
     <!-- Animation Type-it (tipeitjs.com)  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js" crossorigin="anonymous"></script>
