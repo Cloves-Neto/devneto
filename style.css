@@ -23,7 +23,12 @@
 }
 
 
-    
+.site-container{
+    width: 100%;
+    max-width: 1650px;
+    height: 100vh;
+}
+
 
 body{
     background-color: black !important;
@@ -31,6 +36,9 @@ body{
     margin: 0px auto;
     overflow-x: hidden;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 /* Link fixo lateral */
 .links-fix{
