@@ -320,19 +320,19 @@
         grid-area: it;
         padding: 30px !important;
     }
-    .section-intro .intro h2{
-        font-size: 2rem;
-        margin-top: 60px;
+    .section-intro .intro h2:nth-child(1){
+        font-size: 1.8rem;
+        margin-top: 40px;
         color: var(--cortxtdestaque);
     }
+
     h2 strong{
-        background-color: var(--cortxtdestaque);
+        color: var(--cordestaque);
         border-radius: 4px;
-        padding: 8px;
-        color: var(--cortxtsecundaria);
-    }
-    h2 span{
-        color: var(--cortitulo);
+        background-color: white;
+        font-size: 2rem;
+        padding: 5px;
+
     }
     h2.digitando{
         margin-top: 30px !important;
