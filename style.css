@@ -286,7 +286,6 @@
         background-clip: border-box;
         background-size: 1070px 100vh;
     }
-
     .section-eu .sobre-conteudo{
         grid-area: sobre;
         z-index: 5;
@@ -311,7 +310,6 @@
     input[type='radio']{
         display: none;
     }
-
     .sobre-conteudo .div-label label{
         color: white;
         width: 100px;
@@ -320,19 +318,18 @@
         text-align: start;
     
     }
-
     /* input dados */
-    input[id='nome']:checked ~ div label[for='nome'],
+    input[id='perfil']:checked ~ div label[for='perfil'],
     input[id='skill']:checked ~ div label[for='skill'],
-    input[id='troca']:checked ~ div label[for='troca']{
+    input[id='info']:checked ~ div label[for='info']{
         background-color: #ffffff;
         color: blueviolet;
         font-weight: 600;
         border-radius: 5px;
     }
-    input[id='nome']:checked ~ div.nome,
+    input[id='perfil']:checked ~ div.perfil,
     input[id='skill']:checked ~ div.skill,
-    input[id='troca']:checked ~ div.troca{
+    input[id='info']:checked ~ div.info{
         display: flex;
         flex-direction: column;
         width: 350px;
@@ -351,29 +348,22 @@
     }
     /* width */
     .div::-webkit-scrollbar {
-        width: 10px;
-
+        width: 5px;
     }
-    
     /* Track */
     .div::-webkit-scrollbar-track {
         background: transparent;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
+        border-radius: 10px;
     }
-    
     /* Handle */
     .div::-webkit-scrollbar-thumb {
-        background: #5b0089;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
+        background: blueviolet;
+        border-radius: 10px;
     }
-    
     /* Handle on hover */
     .div::-webkit-scrollbar-thumb:hover {
         background: #7705f1;
     }
-
     .sobre-conteudo .div h2{
         font-size: 1.6rem !important;
         color: rgb(255, 255, 255);
@@ -404,7 +394,6 @@
     .sobre-conteudo .div.skill .icon-skill ion-icon{
         font-size: 2.4rem;
     }
-
     .sobre-conteudo .div.skill .icon-skill:hover ion-icon{
         color: white;
     }
@@ -432,8 +421,6 @@
     .sobre-conteudo .div.skill .icon-skill:hover:nth-child(7){
         background-color: #03A9F4;
     }
-    
-
 
     /* Sessao Serviços*/
     .section-servicos{
@@ -520,9 +507,7 @@
 
 
 
-
     
-
     /* Responsive - Mobile */
     @media screen and (max-width: 820px) {
     /* Menu */
