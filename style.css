@@ -12,19 +12,136 @@
     /* Variaveis  */
     :root{
         --cordestaque:#8a2be2;
-        --corbackprincipal: black;
-        --corbacksecundaria: rgb(23, 23, 23);
-        --corback: white;
-        --cortxtsecundaria: black;
-        --cormenu: black;
-        --cortitulo: blueviolet;
-        --cortxtprimaria: rgb(115, 113, 113);
-        --cortxtdestaque: white;
-        --bglinkfixhv: blueviolet;
-        --bglinkfix: white;
+        --corbackprincipal: #000000;
+        --corbacksecundaria: #171717;
+        --corback: #ffffff;
+        --cortxtsecundaria: #000000;
+        --cormenu: #000000;
+        --cortitulo: #8a2be2;
+        --cortxtprimaria: #737171;
+        --cortxtdestaque: #ffffff;
+        --bglinkfixhv: #8a2be2;
+        --bglinkfix: #ffffff;
         --coricone:  #000000;
-        --coriconehv: white;
+        --coriconehv: #ffffff;
         --text-family: 'Poppins', sans-serif;
+        /* padrão navegador */
+        --bs-primary-bg-subtle: #cfe2ff;
+        --bs-blue: #0d6efd;
+        --bs-indigo: #6610f2;
+        --bs-purple: #6f42c1;
+        --bs-pink: #d63384;
+        --bs-red: #dc3545;
+        --bs-orange: #fd7e14;
+        --bs-yellow: #ffc107;
+        --bs-green: #198754;
+        --bs-teal: #20c997;
+        --bs-cyan: #0dcaf0;
+        --bs-black: #000;
+        --bs-white: #fff;
+        --bs-gray: #6c757d;
+        --bs-gray-dark: #343a40;
+        --bs-gray-100: #f8f9fa;
+        --bs-gray-200: #e9ecef;
+        --bs-gray-300: #dee2e6;
+        --bs-gray-400: #ced4da;
+        --bs-gray-500: #adb5bd;
+        --bs-gray-600: #6c757d;
+        --bs-gray-700: #495057;
+        --bs-gray-800: #343a40;
+        --bs-gray-900: #212529;
+        --bs-primary: #0d6efd;
+        --bs-secondary: #6c757d;
+        --bs-success: #198754;
+        --bs-info: #0dcaf0;
+        --bs-warning: #ffc107;
+        --bs-danger: #dc3545;
+        --bs-light: #f8f9fa;
+        --bs-dark: #212529;
+        --bs-primary-rgb: 13,110,253;
+        --bs-secondary-rgb: 108,117,125;
+        --bs-success-rgb: 25,135,84;
+        --bs-info-rgb: 13,202,240;
+        --bs-warning-rgb: 255,193,7;
+        --bs-danger-rgb: 220,53,69;
+        --bs-light-rgb: 248,249,250;
+        --bs-dark-rgb: 33,37,41;
+        --bs-primary-text-emphasis: #052c65;
+        --bs-secondary-text-emphasis: #2b2f32;
+        --bs-success-text-emphasis: #0a3622;
+        --bs-info-text-emphasis: #055160;
+        --bs-warning-text-emphasis: #664d03;
+        --bs-danger-text-emphasis: #58151c;
+        --bs-light-text-emphasis: #495057;
+        --bs-dark-text-emphasis: #495057;
+        --bs-primary-bg-subtle: #cfe2ff;
+        --bs-secondary-bg-subtle: #e2e3e5;
+        --bs-success-bg-subtle: #d1e7dd;
+        --bs-info-bg-subtle: #cff4fc;
+        --bs-warning-bg-subtle: #fff3cd;
+        --bs-danger-bg-subtle: #f8d7da;
+        --bs-light-bg-subtle: #fcfcfd;
+        --bs-dark-bg-subtle: #ced4da;
+        --bs-primary-border-subtle: #9ec5fe;
+        --bs-secondary-border-subtle: #c4c8cb;
+        --bs-success-border-subtle: #a3cfbb;
+        --bs-info-border-subtle: #9eeaf9;
+        --bs-warning-border-subtle: #ffe69c;
+        --bs-danger-border-subtle: #f1aeb5;
+        --bs-light-border-subtle: #e9ecef;
+        --bs-dark-border-subtle: #adb5bd;
+        --bs-white-rgb: 255,255,255;
+        --bs-black-rgb: 0,0,0;
+        --bs-font-sans-serif: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        --bs-font-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+        --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+        --bs-body-font-family: var(--bs-font-sans-serif);
+        --bs-body-font-size: 1rem;
+        --bs-body-font-weight: 400;
+        --bs-body-line-height: 1.5;
+        --bs-body-color: #212529;
+        --bs-body-color-rgb: 33,37,41;
+        --bs-body-bg: #fff;
+        --bs-body-bg-rgb: 255,255,255;
+        --bs-emphasis-color: #000;
+        --bs-emphasis-color-rgb: 0,0,0;
+        --bs-secondary-color: rgba(33, 37, 41, 0.75);
+        --bs-secondary-color-rgb: 33,37,41;
+        --bs-secondary-bg: #e9ecef;
+        --bs-secondary-bg-rgb: 233,236,239;
+        --bs-tertiary-color: rgba(33, 37, 41, 0.5);
+        --bs-tertiary-color-rgb: 33,37,41;
+        --bs-tertiary-bg: #f8f9fa;
+        --bs-tertiary-bg-rgb: 248,249,250;
+        --bs-link-color: #0d6efd;
+        --bs-link-color-rgb: 13,110,253;
+        --bs-link-decoration: underline;
+        --bs-link-hover-color: #0a58ca;
+        --bs-link-hover-color-rgb: 10,88,202;
+        --bs-code-color: #d63384;
+        --bs-highlight-bg: #fff3cd;
+        --bs-border-width: 1px;
+        --bs-border-style: solid;
+        --bs-border-color: #dee2e6;
+        --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+        --bs-border-radius: 0.375rem;
+        --bs-border-radius-sm: 0.25rem;
+        --bs-border-radius-lg: 0.5rem;
+        --bs-border-radius-xl: 1rem;
+        --bs-border-radius-xxl: 2rem;
+        --bs-border-radius-2xl: var(--bs-border-radius-xxl);
+        --bs-border-radius-pill: 50rem;
+        --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        --bs-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+        --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+        --bs-focus-ring-width: 0.25rem;
+        --bs-focus-ring-opacity: 0.25;
+        --bs-focus-ring-color: rgba(13, 110, 253, 0.25);
+        --bs-form-valid-color: #198754;
+        --bs-form-valid-border-color: #198754;
+        --bs-form-invalid-color: #dc3545;
+        --bs-form-invalid-border-color: #dc3545;
     }
 
     
@@ -90,46 +207,49 @@
 
     /* Link fixo lateral */
     .links-fix{
+        width: 40px;
+        height: 100vh;
         position: fixed;
         z-index: 10;
-        bottom: 280px;
+        bottom: 0;
         left: 0;
     }
     .links-fix ul{
         width: 40px;
-        padding: 5px;
-        height: 100px;
+        height: 100%;
         display: flex;
-        gap: 5px;
         flex-direction: column;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: center;
+        
     }
     .links-fix ul li{
-        width: 25px;
-        height: 30px;
+        width: 35px;
+        height:35px;
         background-color:  var(--bglinkfix);
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 100px;
-        padding: 0;
-
+        margin-top: 10px;
+        margin-right: 20px;
     }
     .links-fix ul li a {
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    .links-fix ul li a svg{
+    .links-fix ul li a ion-icon{
         color: var(--coricone);
+        font-size: 1.4rem;
     }
     .links-fix ul li:hover{
         transition: ease-in-out .2s;
         background-color: var(--bglinkfixhv);
     }
-    .links-fix ul li:hover a svg{
+    .links-fix ul li:hover a ion-icon{
         transition: ease-in-out .2s;
-        color: var(--coriconehv);
+        color: var(--coriconehv) !important;
     }
 
 
@@ -201,7 +321,7 @@
         padding: 30px !important;
     }
     .section-intro .intro h2{
-        font-size: 2.4rem;
+        font-size: 2rem;
         margin-top: 60px;
         color: var(--cortxtdestaque);
     }
@@ -220,7 +340,7 @@
         color: var(--cortitulo) !important;
     }
     .section-intro p{
-        margin-top: 30px;
+        margin-top: 60px;
         color: var(--cortxtprimaria);
     }
     .section-intro a.download{
@@ -316,6 +436,7 @@
         padding: 5px;
         font-size: 1.4rem;
         text-align: start;
+        cursor: pointer;
     
     }
     /* input dados */
@@ -326,13 +447,14 @@
         color: blueviolet;
         font-weight: 600;
         border-radius: 5px;
+        z-index: 5;
     }
     input[id='perfil']:checked ~ div.perfil,
     input[id='skill']:checked ~ div.skill,
     input[id='info']:checked ~ div.info{
         display: flex;
         flex-direction: column;
-        width: 350px;
+        width: 550px;
         height: 450px;
         background-color: black;
         backdrop-filter: blur(10px);
@@ -368,8 +490,19 @@
         font-size: 1.6rem !important;
         color: rgb(255, 255, 255);
         margin-top: 15px;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
+        position: relative;
     }
+    .sobre-conteudo .div h2::after{
+        content: '';
+        width: 50px;
+        height: 5px;
+        background-color: #8a2be2;
+        position: absolute;
+        bottom: -15px;
+        left: 0;
+    }
+
     .sobre-conteudo .div p{
         font-size: 1rem;
         color: var(--cortxtprimaria);
@@ -378,13 +511,13 @@
     .sobre-conteudo .skill{
         flex-direction: row !important;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 20px;
         align-content: space-evenly;
         justify-content: space-around;
     }
     .sobre-conteudo .div.skill .icon-skill{
-        width: 90px;
-        height: 90px;
+        width: 120px;
+        height: 120px;
         border-radius: 5px;
         display: flex;
         align-items: center;
@@ -507,7 +640,7 @@
 
 
 
-    
+
     /* Responsive - Mobile */
     @media screen and (max-width: 820px) {
     /* Menu */
