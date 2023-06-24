@@ -1,0 +1,254 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 1rem ;
+    font-family: Arial, Helvetica, sans-serif ;
+    color: white;
+    list-style: none ;
+}
+body{
+    background-color: aliceblue;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+h1{
+    font-weight: bold;
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+
+.granbox{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1440px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.carde{
+    width: 100%;
+    max-width: 310px;
+    height: 450px;
+    margin: 10px;
+
+    padding: 10px ;
+    display: grid;
+    grid-template-areas:'buttons'
+                        'picture'
+                        'resume';
+    grid-template-columns: 1fr;
+    grid-template-rows: 5% 35% 60%;
+
+    border-radius: 10px;
+    border: solid 2px blueviolet;
+    background-color: #15011a;
+    box-shadow:  10px 10px 20px #bdbdbd, -10px -10px 20px #ffffff;
+}
+
+
+.buttons{
+    grid-area: buttons;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 5px;
+    justify-content: flex-end;
+}
+.buttons span{
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100px;
+}
+span.green{
+    background-color: #00ca4e;
+}
+span.yellow{
+    background-color: #ffbd44;
+}
+span.red{
+    background-color: #ff605c;
+}
+
+.picture{
+    grid-area: picture;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+}
+.picture div{
+    width: 120px;
+    height: 120px;
+    border-radius: 100px;
+    background-color: #ffffff;
+    border: solid 2px blueviolet;
+}
+.picture div img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;;
+}
+
+
+/* Resume */
+.resume{
+    width: 100%;
+    height: 100%;
+    
+    grid-area: resume;
+    padding: 2px;
+}
+
+/* Info */
+
+/* Info * H1 - Titulo */
+
+.resume .info h1{
+    font-size: 1.2rem;
+    /* margin-bottom: 10px; */
+}
+
+/* Info *  UL - Social */
+.resume .social{
+    width: 100%;
+    height: 40px;
+    display: flex; 
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    align-items: center;
+    padding-right: 30px;
+
+}
+
+.resume .social li{
+    width: 30px;
+    height: 30px;
+
+    border-radius: 100px;
+}
+
+.resume .social li a{
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resume .social li:nth-child(1){
+    background-color: rgb(237, 11, 120);
+}
+.resume .social li:nth-child(2){
+    background-color: rgb(54, 54, 240);
+}
+.resume .social li:nth-child(3){
+    background-color: rgb(124, 202, 7);
+}
+.resume .social li:nth-child(4){
+    background-color: blueviolet;
+}
+
+.resume .social li:nth-child(1):hover{
+    background-color: rgb(155, 24, 87);
+}
+.resume .social li:nth-child(2):hover{
+    background-color: rgb(40, 40, 140);
+}
+.resume .social li:nth-child(3):hover{
+    background-color: rgb(116, 165, 42);
+}
+.resume .social li:nth-child(4):hover{
+    background-color: rgb(81, 33, 126);
+}
+.resume .social li a ion-icon{
+    width: 60%;
+    height: 60%;
+}
+
+.resume .info p{
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 8px;
+    color: #dbdbdb;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-weight: 100;
+}
+.resume .info p strong{ 
+    font-size: 11px;
+}
+.resume .info p small{
+    font-size: 8px;
+    font-weight: 100;
+    color: #dbdbdb;
+}
+.container-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+.container-btn a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background-color: rgb(220, 220, 220);
+    padding: 5px;
+    width: 110px;
+    height: 35px;
+    border-radius: 100px;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: grey;
+    transition: .2s ease-in-out;
+}
+.container-btn a:hover{
+    color: rgb(255, 255, 255);
+    background-color:  blueviolet;
+    border: solid 1px white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+footer{
+    width: 100%;
+    margin-top: 20px !important;
+    text-align: center;
+}
+footer p{
+    color: #0115226f !important;
+    font-size: 0.5 !important;
+
+}   
