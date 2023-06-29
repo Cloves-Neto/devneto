@@ -16,15 +16,12 @@ body{
     align-items: center;
     overflow: hidden;
 }
-
 h1{
     font-weight: bold;
     font-size: 1rem;
     width: 100%;
     text-align: center;
 }
-
-
 .granbox{
     margin: 0 auto;
     width: 100%;
@@ -37,12 +34,11 @@ h1{
     padding: 10px;
     position: relative;
 }
-
 .carde{
     width: 100%;
     max-width: 310px;
     height: 450px;
-    margin: 10px;
+    /* margin: 10px; */
 
     padding: 10px ;
     display: grid;
@@ -50,15 +46,14 @@ h1{
                         'picture'
                         'resume';
     grid-template-columns: 1fr;
-    grid-template-rows: 5% 35% 60%;
+    grid-template-rows: 5% 30% 75%;
+    gap: 5px;
 
     border-radius: 10px;
     border: solid 2px blueviolet;
     background-color: #15011a;
     box-shadow:  10px 10px 20px #bdbdbd, -10px -10px 20px #ffffff;
 }
-
-
 .buttons{
     grid-area: buttons;
     display: flex;
@@ -82,7 +77,6 @@ span.yellow{
 span.red{
     background-color: #ff605c;
 }
-
 .picture{
     grid-area: picture;
     width: 100%;
@@ -114,7 +108,7 @@ span.red{
     height: 100%;
     
     grid-area: resume;
-    padding: 2px;
+    
 }
 
 /* Info */
@@ -123,7 +117,7 @@ span.red{
 
 .resume .info h1{
     font-size: 1.2rem;
-    /* margin-bottom: 10px; */
+    
 }
 
 /* Info *  UL - Social */
@@ -133,19 +127,18 @@ span.red{
     display: flex; 
     justify-content: center;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
     align-items: center;
     padding-right: 30px;
 
-}
 
+}
 .resume .social li{
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
 
     border-radius: 100px;
 }
-
 .resume .social li a{
     width: 100%;
     height: 100%;
@@ -154,7 +147,6 @@ span.red{
     align-items: center;
     justify-content: center;
 }
-
 .resume .social li:nth-child(1){
     background-color: rgb(237, 11, 120);
 }
@@ -167,7 +159,6 @@ span.red{
 .resume .social li:nth-child(4){
     background-color: blueviolet;
 }
-
 .resume .social li:nth-child(1):hover{
     background-color: rgb(155, 24, 87);
 }
@@ -184,30 +175,25 @@ span.red{
     width: 60%;
     height: 60%;
 }
-
 .resume .info p{
     text-align: center;
     padding: 10px 20px;
-    font-size: 12px;
-    color: #dbdbdb;
+    font-size: 10px;
+    color: #dbdbdb; 
     display: flex;
     flex-direction: column;
     gap: 5px;
     font-weight: 100;
+
 }
 .resume .info p strong{ 
     font-size: 11px;
 }
-.resume .info p small{
-    font-size: 8px;
-    font-weight: 100;
-    color: #dbdbdb;
-}
 .container-btn{
     width: 100%;
+    height: auto;
     display: flex;
     justify-content: center;
-    padding-bottom: 50px;
 }
 .container-btn a{
     display: flex;
@@ -231,15 +217,22 @@ span.red{
     background-color:  blueviolet;
     border: solid 1px white;
 }
-
-
 footer{
     width: 100%;
     margin-top: 20px !important;
     text-align: center;
+    
 }
 footer p{
     color: #0115226f !important;
     font-size: 0.5 !important;
-
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }   
+footer p small{
+    font-size: 10px;
+    font-weight: 100;
+    color: #a5a5a5;
+    
+}
