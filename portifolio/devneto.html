@@ -8,6 +8,7 @@
     <title>Devneto</title>
     <link rel="stylesheet" href="./devneto.css">   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="script.js"></script>
 
 </head>
 <body>
@@ -15,7 +16,10 @@
 
         <!-- Navegação primaria - menu fixo de ancoragem das sessões do site-->
         <header> 
-                <img src="./assets/dnlogo.png" style="border-radius: 300px; width: 100%; max-width: 50px; margin-left: 30px;" alt="logo DevNeto">
+            <div>
+                <div class="container-img">
+                    <img src="./assets/dnlogo.png"  alt="logo DevNeto">
+                </div>       
                 
                 <nav class="navegacao-primaria">  
                     <div id="moba" class="menu-mobile" onclick="ativar()">
@@ -27,39 +31,39 @@
                     <ul aria-label="Menu de navegação primária" class="menu-lista">
                         <li><a href="#inicio" translate="no" class="notranslate">Home</a></li>
                         <li><a href="#sobre">Sobre</a></li>
-                        <!-- <li><a href="#resumo">Resumo</a></li> -->
                         <li><a href="#servico">Serviços</a></li>
                         <li><a href="#portifolio">Portifólio</a></li>
-                        <!-- <li><a href="#colab">Colabs</a></li> -->
-                        <!-- <li><a href="#contato">Contato</a></li> -->
                     </ul>
                 </nav>
+            </div>
         </header>        
 
         <!-- Sessão de introdução - Inicio -->
-        <section aria-label="sessao inicial download curriculo Cloves Neto" class="section section-intro " id="inicio">
+        <section class="section section-intro " 
+        id="inicio" 
+        aria-label="sessao inicial download curriculo Cloves Neto">
             
             <!-- Navegação secundaria - link lateral fixo -->
             <nav class="links-fix">
                 <ul aria-label="Links flutuantes alinhados a esquerda com acesso as redes sociais">
                     <li>
-                        <a href="#">
+                        <a href="https://www.instagram.com/devneto_/" target="_blank">
                             <ion-icon name="logo-instagram"></ion-icon>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/in/cloves-neto/" target="_blank">
                             <ion-icon name="logo-linkedin"></ion-icon>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="https://github.com/Cloves-Neto" target="_blank">
                             <ion-icon name="logo-github"></ion-icon>
                         </a>
                     </li>
                 </ul>
             </nav>
-
+            
             <!-- Introdução do site -->
             <div class="intro">
                 <h2 class="nome">
@@ -83,7 +87,9 @@
         </section>
 
         <!-- Conteúdo principal do site -->
-        <section aria-label="sessao principal com as informações sobre mim" class="section section-principal" id="sobre">
+        <section class="section section-principal"
+        id="sobre"
+        aria-label="sessao principal com as informações sobre mim">
             <!-- Artigo / Sobre mim -->
             <article aria-label="sessão sobre mim" class="sobre section-eu">
                 <!-- Titulo da sessão -->
@@ -227,83 +233,9 @@
             </article>
         </section>
 
-        <!-- Qualificações -->
-        <!-- <section class="section section-resumo" id="resumo">
-            <div class="div-titulo">
-                <h2 >Resume</h2>
-                <p>Courses and qualifications</p>
-                <div aria-label="sessao de botoes ">
-                    <span class="mark"></span>
-                    <span class="mark"></span>
-                    <span class="mark"></span>
-                </div>
-            </div>
-            <div id="carouselExampleCaptions" class="carousel slide education">
-
-                <ul class="carousel-inner">
-
-                    <li class="carousel-item active">
-                        <h4>Engenharia de Software</h4>
-                        <small><span>Cursando</span> - 16/12/2026</small>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                            Maxime eligendi dolorum
-                            eaque tempore cum illum neque deleniti odit voluptatem
-                            qui provident, explicabo error repudiandae fugit ipsum 
-                            accusantium quis beatae voluptatum?
-                        </p>
-                    </li>
-    
-                    <li class="carousel-item ">
-                        <h4>Tecnico em informática</h4>
-                        <small><span>Cursando</span> - 20/06/2023</small>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                            Maxime eligendi dolorum
-                            eaque tempore cum illum neque deleniti odit voluptatem
-                            qui provident, explicabo error repudiandae fugit ipsum 
-                            accusantium quis beatae voluptatum?
-                        </p>
-                    </li>
-    
-                    <li class="carousel-item ">
-                        <h4>Técnico em Administração</h4>
-                        <small><span>ETEC Juscelino K. | Concluído</span></small>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                            Maxime eligendi dolorum
-                            eaque tempore cum illum neque deleniti odit voluptatem
-                            qui provident, explicabo error repudiandae fugit ipsum 
-                            accusantium quis beatae voluptatum?
-                        </p>
-                    </li>
-    
-                    <li class="carousel-item ">
-                        <h4>Curso de Photoshop - Introdutório</h4>
-                        <small>Escola SAGA | Concluído</small>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                            Maxime eligendi dolorum
-                            eaque tempore cum illum neque deleniti odit voluptatem
-                            qui provident, explicabo error repudiandae fugit ipsum 
-                            accusantium quis beatae voluptatum?
-                        </p>
-                    </li>
-
-                </ul>
-
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                </div>
-
-            </div>
-        </section> -->
-
         <!-- Serviços -->
-        <section class="section section-servicos" id="servico">
+        <section class="section section-servicos"
+        id="servico">
             <div class="div-titulo">
                 <h2 >Serviços</h2>
                 <p>Tipos de serviço que presto / ofereço</p>
@@ -355,7 +287,8 @@
             </div>
         </section>
 
-        <section class="section section-potifolio" id="portifolio">
+        <section class="section section-potifolio"
+        id="portifolio">
             <div class="div-titulo">
                 <h2 >Portifólio</h2>
                 <p>Projetos pessoais e profissionais</p>
@@ -372,13 +305,11 @@
 
     </div>
 
-<!-- Sessão de scripts -->
+    <!-- Sessão de scripts -->
 
     <!-- Animation Type-it (tipeitjs.com)  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js" crossorigin="anonymous"></script>
-    <!-- myscript int -->
-    <script src="script.js"></script>
     <!-- ion-icon script ext -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

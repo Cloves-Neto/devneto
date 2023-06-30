@@ -89,8 +89,8 @@ span.red{
     padding: 0;
 }
 .picture div{
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     border-radius: 100px;
     background-color: #ffffff;
     border: solid 2px blueviolet;

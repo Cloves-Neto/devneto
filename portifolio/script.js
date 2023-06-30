@@ -17,15 +17,25 @@ function ativar(){
     })  
 }
 
-// Style referencia de sessão do menu
-let sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav ul li');
+    // Style referencia de sessão do menu
 
-function menuAtivo(){
-    let len = sections.length;
-    while(--len && window.scrollY + 97 < sections[len].offsetTop){}
-    navLinks.forEach(nvl => nvl.classList.remove('ativo'));
-    navLinks[len].classList.add('ativo');
-}
-menuAtivo();
-window.addEventListener("scroll", menuAtivo);
+document.addEventListener('DOMContentLoaded', function() {
+
+    window.addEventListener("scroll", menuAtivo);
+
+    function menuAtivo(){
+        
+        let sections = document.querySelectorAll('.section');
+
+        let navLinks = document.querySelectorAll('header div nav ul li');
+
+        let len = sections.length;
+
+        while(--len && window.scrollY + 97 < sections[len].offsetTop){}
+        navLinks.forEach(nvl => nvl.classList.remove('ativo'));
+        navLinks[len].classList.add('ativo');
+
+    }
+    menuAtivo();
+})
+
