@@ -875,6 +875,8 @@ input[id='info']:checked ~ div.info{
     /* Serviços */
     .section-servicos{
         overflow: hidden;
+width: 100%;
+height 100vh;
     }  
     .section-servicos .div-titulo{
         width: 100%;
@@ -890,10 +892,9 @@ input[id='info']:checked ~ div.info{
         background-color: orange;
     }
     .section-servicos .meus_servicos .lista-servico{
-        width: 100%;
-        height: 100%;
+        width: 90%;
+        height: 90%;
         background-color: green;
-        gap: 5px;
         padding: 0;
         display: flex;
         flex-wrap: nowrap;
@@ -902,8 +903,6 @@ input[id='info']:checked ~ div.info{
     }
     .section-servicos .meus_servicos .lista-servico li{
         display: flex;
-        width: 100%;
-        height: 100%;
         flex-shrink: 0;
         scroll-snap-align: start;
     }
