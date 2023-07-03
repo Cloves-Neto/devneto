@@ -779,6 +779,7 @@ input[id='info']:checked ~ div.info{
     .menu-ativo ~ .menu-lista li{
         text-align: center;
     }
+
     /* Intro */
     .section-intro{
         position: relative;
@@ -827,13 +828,85 @@ input[id='info']:checked ~ div.info{
         text-align: center;
         color: rgb(186, 183, 183);
     }
-
-
-
-
     .section-intro .intro h2:nth-child(1){
         font-size: 1rem;
     }       
+
+    /* Sobre */
+    .aside-sobre{
+        display: none;
+    }
+    .section-eu{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+    }
+    .section-eu .sobre-conteudo{
+        display: flex;
+        flex-direction: column;
+    }
+    .section-eu .sobre-conteudo .div-label{
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        margin: 15px 0 10px 0;
+    }
+    .section-eu .sobre-conteudo .div{
+        width: 100% !important;
+    }
+    .section-eu .sobre-conteudo .div.skill .icon-skill{
+        width: 90px;
+        height: 90px;
+    }
+    .section-eu .sobre-conteudo .div.info .info-lista{
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        gap: 25px;
+    }
+    .section-eu .sobre-conteudo .div.info .info-lista .wrap-list span{
+        width: 100%;
+        height: 30px;
+    }
+
+    /* Serviços */
+    .section-servicos{
+        overflow: hidden;
+    }  
+    .section-servicos .div-titulo{
+        width: 100%;
+        height: 10%;
+    }
+
+    .section-servicos .meus_servicos{
+        width: 100%;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #03A9F4;
+    }
+    .section-servicos .meus_servicos .lista-servico{
+        width: 300px;
+        height: 200px;
+        justify-content: flex-start;
+        background-color: #fd7e14;
+        flex-direction: row;
+        gap: 5px;
+        padding: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+    .section-servicos .meus_servicos .lista-servico li{
+        width: 300px !important;
+        height: 200px;
+        margin: 0;
+    }
+
 
 
 }
