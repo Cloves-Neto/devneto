@@ -319,6 +319,7 @@ header div .menu-lista li:hover a, li.ativo a{
 /* Sessão Principal / Sobre */
 
 .section-eu{
+    /* padding-top: 60px; */
     width: 100%;
     height: 100%;
     display: grid;
@@ -332,13 +333,19 @@ header div .menu-lista li:hover a, li.ativo a{
 }
 .section-eu .div-titulo{
     grid-area: titulo;
-    background-color: #03A9F4;
+    color: white;
+    text-align: center;
+    /* margin-top: 60px; */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding-top: 10px;
 }
+.section-eu .div-titulo p{
+    color: gray;
+}
+
 .section-eu .aside-sobre{
     grid-area: img;
     overflow: hidden;
@@ -600,28 +607,29 @@ input[id='info']:checked ~ div.info{
 
 /* Sessao Serviços*/
 .section-servicos{
-    margin-top: 60px;
+    margin-top: 100px;
     overflow: visible;
-    /* padding-left: 60px; */
-    /* background-color: rgb(190, 8, 8); */
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 .section-servicos .div-titulo{
-
     width: 100%;
-    height: 60px;
-    background-color: #03A9F4;
-    height: 10%;
+    text-align: center;
+    height: 50px;
+    /* height: 10%; */
+    color: white;
 }
+.section-servicos .div-titulo p{
+    color: gray;
+}
+
 .meus_servicos{
     width: 100%;
     height: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
     padding: 60px;
     color: white;
 }
@@ -630,7 +638,7 @@ input[id='info']:checked ~ div.info{
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
     align-items: center;
     justify-content: center;
 }
@@ -644,8 +652,7 @@ input[id='info']:checked ~ div.info{
     align-items: center;
     gap: 20px;
     text-align: center;
-    width: 100%;
-    max-width: 300px;
+    width: 300px;
     height: 250px;
     background-color: #70707087;
     backdrop-filter: blur(10px);
@@ -872,42 +879,54 @@ input[id='info']:checked ~ div.info{
         height: 30px;
     }
 
-    /* Serviços */
+
+    .links-fix{
+        display: none;
+    }
+
+
+    /* Sessao Serviços*/
     .section-servicos{
-        overflow: hidden;
-width: 100%;
-height 100vh;
-    }  
-    .section-servicos .div-titulo{
-        width: 100%;
-        height: 10%;
+        margin-top: 0px;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
     }
 
     .section-servicos .meus_servicos{
-        width: 100%;
-        height: 90%;
-        display: flex;
-        justify-items: center;
-        align-items: center;
-        background-color: orange;
-    }
-    .section-servicos .meus_servicos .lista-servico{
-        width: 100%;
-        height: 100%;
-        background-color: green;
+        overflow-y: scroll;
         padding: 0;
+        width: unset;
         display: flex;
-        flex-wrap: nowrap;
-        overflow: auto;
-        scroll-snap-type: x mandatory;
+        align-items: center;
+        justify-content: center;
+        padding-left: 60px;
+    }
+
+    .section-servicos .meus_servicos .lista-servico{
+        display: flex;
+        justify-content: unset;
+        align-items: unset;
+        flex-direction: row;
+        flex-wrap: unset;
+        gap: 10px;
+        /* padding-left: 50px; */
     }
     .section-servicos .meus_servicos .lista-servico li{
-        display: flex;
-        width:90%;
-        height: 350px;
-        flex-shrink: 0;
-        scroll-snap-align: start;
+        width: 450px !important;
     }
+
+    ul{
+        padding: 0 !important;
+    }
+
+    .meus_servicos .lista-servico li p {
+        width: 200px;
+        font-size: 14px;
+        color: rgb(169, 169, 169);
+    }
+
 
 
 
