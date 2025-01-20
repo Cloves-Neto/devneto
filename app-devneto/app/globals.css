@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes slideWords {
+    0%, 27% {
+      transform: translateY(0%);
+    }
+    33%, 60% {
+      transform: translateY(-33.33%);
+    }
+    66%, 93% {
+      transform: translateY(-66.66%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+  
+  .animate-slide-words {
+    animation: slideWords 6s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .animate-slide-words span {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

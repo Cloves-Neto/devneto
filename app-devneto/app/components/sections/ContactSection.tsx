@@ -1,6 +1,9 @@
 'use client'
 
+import Link from 'next/link'
 import { useState } from 'react'
+import { Icon } from "@iconify/react";
+
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -17,12 +20,12 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="h-[70dvh] flex flex-col w-full justify-center items-center bg-[#1a1625] text-white px-6 md:px-12">
+    <section className="h-auto flex flex-col w-full justify-center items-center bg-[#0a051a] text-white p-12 md:px-12 md:h-[70dvh]">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-24">
         {/* Left Column */}
         <div className="space-y-8">
           <div className="space-y-4">
-            <p className="text-purple-500">my services</p>
+            <p className="text-purple-500">hire me</p>
             <h2 className="text-4xl font-bold">
               Got a project?
               <br />
@@ -32,27 +35,34 @@ export default function ContactSection() {
           
           <a 
             href="mailto:contato.devneto@gmail.com" 
-            className="text-purple-500 hover:underline inline-block"
+            className="text-purple-500 underline inline-block"
           >
             contato.devneto@gmail.com
           </a>
 
           <div className="flex gap-4">
             {/* Social Media Placeholders */}
-            <div className="w-8 h-8 bg-purple-500 rounded-full"></div>
-            <div className="w-8 h-8 bg-purple-500 rounded-full"></div>
-            <div className="w-8 h-8 bg-purple-500 rounded-full"></div>
-            <div className="w-8 h-8 bg-purple-500 rounded-full"></div>
+            <Link href={"https://github.com/cloves-neto"}  className="w-10 h-10 transition-all bg-purple-500 hover:bg-purple-900 rounded-full flex items-center justify-center">
+                <Icon className="text-2xl" icon={"jam:github"} />
+            </Link>
+
+            <Link href={"https://linkedin.com/in/cloves-neto"}  className="w-10 h-10 transition-all bg-purple-500 hover:bg-purple-900 rounded-full flex items-center justify-center">
+                <Icon className="text-2xl" icon={"mage:linkedin"} />
+            </Link> 
+
+            <Link href={"https://instagram.com/_devneto"}  className="w-10 h-10 transition-all bg-purple-500 hover:bg-purple-900 rounded-full flex items-center justify-center">
+                <Icon className="text-2xl" icon={"ri:instagram-fill"} />
+            </Link>  
           </div>
         </div>
 
         {/* Right Column */}
         <div className="space-y-8">
-          <div>
+          <div className="flex flex-col gap-6">
             <h2 className="text-4xl font-bold mb-2">
               Want to estimate your project?
             </h2>
-            <p className="text-2xl">Let me know here</p>
+            <p className="text-2xl text-purple-500 font-light">Let me know here</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -90,11 +100,14 @@ export default function ContactSection() {
               <input
                 type="text"
                 placeholder="tell me about your project"
-                className="w-full bg-transparent border-b border-white/20 py-2 pr-10 focus:outline-none focus:border-purple-500 transition-colors"
+                className="w-full bg-transparent border-b border-white/20 py-2 pr-10 focus:outline-none focus:border-purple-00 transition-colors"
                 value={formData.project}
                 onChange={(e) => setFormData({ ...formData, project: e.target.value })}
               />
-              <div className="absolute right-0 bottom-2 w-6 h-6 bg-purple-500"></div>
+              <button type="submit" className="absolute right-0 bottom-2 w-6 h-6 text-purple-700 hover:text-purple-500">
+                  <Icon icon={"ph:arrow-right"} className="text-2xl" />
+                  <span className="hidden">Enviar</span>
+              </button>
             </div>
           </form>
         </div>

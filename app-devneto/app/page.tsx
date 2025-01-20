@@ -13,8 +13,8 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <MyServicesSection />
-      <ContactSection /> 
       <ProjectsSection />
+      <ContactSection /> 
     </>
       
   );

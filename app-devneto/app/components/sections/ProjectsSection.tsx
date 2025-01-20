@@ -1,5 +1,12 @@
+'use client';
+
+import { Icon } from "@iconify/react";
+import Link from "next/link";
+
 interface Project {
     id: number;
+    src: string,
+    github: string;
     title: string;
     description: string;
     technologies: {
@@ -11,107 +18,95 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Projeto 1",
-    description: "Venha explorar meu portifólio, conhecer as soluções que desenvolvo e acompanhar meu portfolio ....",
+    src: "/images/projects/arquitetura.png",
+    github: "https://github.com/Cloves-Neto/landingpage-arquitetura",
+    title: "Landing Page Arquitetura",
+    description: "Check out an academic project developed during the course at DNC Scholl. This project applied basic styling principles and integration with an external service for form data collection using Sheet Monkey.",
     technologies: [
-      { name: "next js", color: "bg-gray-800" },
-      { name: "typescript", color: "bg-blue-500" },
-      { name: "graph ql", color: "bg-pink-500" },
-      { name: "node js", color: "bg-green-600" },
+      { name: "javascript", color: "bg-yellow-600" },
+      { name: "sheet monkey", color: "bg-red-600" },
+      { name: "css", color: "bg-blue-600" },
     ]
   },
   {
     id: 2,
-    title: "Projeto 2",
-    description: "Venha explorar meu portifólio, conhecer as soluções que desenvolvo e acompanhar meu portfolio",
+    src: "/images/projects/manutencao.png",
+    github: "https://github.com/cloves-neto",
+    title: "Oops!",
+    description: "Project under development, stay tuned for more information.",
     technologies: [
-      { name: "javascript", color: "bg-orange-500" },
-      { name: "typescript", color: "bg-blue-500" },
-      { name: "graph ql", color: "bg-pink-500" },
-      { name: "node js", color: "bg-green-600" },
+      { name: "loading . . .", color: "bg-slate-600" },
     ]
   },
   {
     id: 3,
-    title: "Projeto 3",
-    description: "Uma aplicação web moderna com foco em performance e experiência do usuário",
+    src: "/images/projects/loading.png",
+    github: "https://github.com/cloves-neto",
+    title: "Oops!",
+    description: "Project under development, stay tuned for more information.",
     technologies: [
-      { name: "react", color: "bg-blue-400" },
-      { name: "tailwind", color: "bg-cyan-500" },
-      { name: "firebase", color: "bg-orange-500" },
-      { name: "typescript", color: "bg-blue-500" },
+      { name: "loading . . .", color: "bg-slate-600" },
     ]
   },
-  {
-    id: 4,
-    title: "Projeto 4",
-    description: "Sistema completo de e-commerce com integração de pagamentos e gestão de produtos",
-    technologies: [
-      { name: "vue js", color: "bg-green-500" },
-      { name: "node js", color: "bg-green-600" },
-      { name: "mongodb", color: "bg-green-700" },
-      { name: "stripe", color: "bg-purple-500" },
-    ]
-  },
-  {
-    id: 5,
-    title: "Projeto 5",
-    description: "Aplicação mobile multiplataforma com sincronização em tempo real",
-    technologies: [
-      { name: "react native", color: "bg-blue-500" },
-      { name: "redux", color: "bg-purple-600" },
-      { name: "socket.io", color: "bg-gray-600" },
-      { name: "aws", color: "bg-orange-600" },
-    ]
-  },
+
  
 ]
 
 export default function PortfolioSection() {
   return (
     <section className="min-h-screen bg-[#0a051a] p-8">
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        {/* Left side - Image placeholder */}
-        <div className="aspect-square bg-gray-500 lg:top-8"></div>
 
-        {/* Right side - Content */}
-        <div className="space-y-8">
-          <div className="lg:top-8 bg-[#0a051a] pt-4 z-10">
-            <p className="text-purple-500">projects that inspire results</p>
+         <div className="lg:top-8 bg-[#0a051a] pt-4 z-10 w-[50%] text-center mx-auto">
+            <p className="text-purple-500 text-sm">projects that inspire results</p>
             <h2 className="text-4xl font-bold text-white mb-8">Portfolio</h2>
-          </div>
+        </div>
 
+        <div className="w-full max-w-4xl h-auto p-2 mx-auto">
           {/* Projects list with scroll */}
-          <div className="space-y-6 max-h-[600px] overflow-y-auto pr-4 ">
+          <div className="w-full flex flex-col gap-12">
             {projects.map((project) => (
-              <div 
-                key={project.id}
-                className="group relative rounded-lg p-6 bg-[#150b2e] transition-all duration-300
-                  before:absolute before:inset-0 before:rounded-lg before:border-2 
-                  before:border-transparent before:transition-all
-                  hover:before:border-purple-500 hover:before:shadow-[0_0_15px_rgba(168,85,247,0.5)]"
-              >
-                <h3 className="text-2xl font-semibold text-white mb-4">
-                  {project.title}
-                </h3>
-                <p className="text-gray-300 mb-6">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, index) => (
-                    <span
-                      key={index}
-                      className={`${tech.color} px-3 py-1 rounded-full text-sm text-white`}
-                    >
-                      {tech.name}
-                    </span>
-                  ))}
+              <div key={project.id} className="w-full h-auto group transition-all bg-black/10 border border-purple-600/30 flex flex-col gap-2 rounded-lg hover:border hover:border-purple-600 md:flex-row md:h-80">
+                <div className="w-full h-60 rounded-sm bg-gray-950 items-center justify-center text-white flex relative md:w-[50%] md:h-full">
+                    <img src={project.src} alt="imagem cover" className="opacity-90 transition-all group-hover:opacity-100 absolute top-0 left-0 object-cover w-full h-full" />
+                </div>
+
+                <div className="relative w-full h-80 gap-4 flex flex-col justify-center items-start md:w-[50%]">
+                  
+                  <header className="px-6 flex flex-col gap-2 w-full">
+                    <h3 className="text-2xl font-semibold text-white">
+                      {project.title}
+                    </h3>
+                    <div className="md:absolute md:bottom-0 md:right-0 md:p-6 md:justify-end md:items-end">
+                      <Link href={project.github} className="w-36 h-8 bg-slate-700 p-2 text-sm flex items-center justify-around rounded-full text-white md:w-auto md:h-auto"> 
+                        <Icon className="text-2xl" icon="mdi:github" />
+                        <span className="inline-block md:hidden">Veja o projeto</span>
+                      </Link>
+                    </div>
+                  </header>
+                  
+
+                  <main className="w-full px-6">
+                    <p className="text-gray-300">
+                      {project.description}
+                    </p>
+                  </main>
+
+                  <footer className="flex flex-wrap gap-2 px-4">
+                    {project.technologies.map((tech, index) => (
+                      <span
+                        key={index}
+                        className={`${tech.color} px-3 py-1 rounded-full text-sm text-white scale-90`}
+                      >
+                        {tech.name}
+                      </span>
+                    ))}
+                  </footer>
+
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
     </section>
   )
 }
