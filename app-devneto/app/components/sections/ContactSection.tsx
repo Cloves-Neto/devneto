@@ -14,6 +14,7 @@ export default function ContactSection() {
   
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   
   useEffect(() => {
@@ -37,6 +38,15 @@ export default function ContactSection() {
     };
   }, []);
 
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    setShowToast(true);
+    
+    setTimeout(() => {
+      setShowToast(false);
+    }, 3000);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
@@ -48,6 +58,16 @@ export default function ContactSection() {
       ref={sectionRef}
       className="relative bg-[#0a051a] text-white py-20 px-6 sm:px-8 md:px-12 overflow-hidden"
     >
+      {/* Toast notification */}
+      <div 
+        className={`fixed bottom-4 right-4 bg-purple-600 text-white px-4 py-3 rounded-lg shadow-lg flex items-center space-x-2 transition-all duration-300 z-50 ${
+          showToast ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16 pointer-events-none'
+        }`}
+      >
+        <Icon icon="mdi:check-circle" className="text-xl" />
+        <span>Email copied to clipboard!</span>
+      </div>
+      
       {/* Subtle background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-64 h-64 bg-purple-600/5 rounded-full blur-3xl"></div>
@@ -99,12 +119,14 @@ export default function ContactSection() {
                 <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
                   <Icon icon="mdi:email-outline" className="text-xl text-purple-400" />
                 </div>
-                <a 
-                  href="mailto:contato.devneto@gmail.com" 
-                  className="text-white hover:text-purple-400 transition-colors"
+                <button 
+                  onClick={() => copyToClipboard("contato.devneto@gmail.com")}
+                  className="text-white hover:text-purple-400 transition-colors flex items-center group"
+                  aria-label="Copy email address"
                 >
                   contato.devneto@gmail.com
-                </a>
+                  <Icon icon="mdi:content-copy" className="ml-2 text-sm opacity-0 group-hover:opacity-70 transition-opacity" />
+                </button>
               </div>
               
               <div className="flex items-center space-x-3">
