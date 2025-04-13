@@ -22,7 +22,6 @@ const AboutSection: React.FC = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   
-  // Intersection Observer effect
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -49,7 +48,7 @@ const AboutSection: React.FC = () => {
       id: 'development',
       title: 'Development',
       description: 'Technologies and frameworks I use to build powerful web applications.',
-      accentColor: '#8B5CF6', // Purple
+      accentColor: '#8B5CF6',
       skills: [
         { name: 'React', icon: 'skill-icons:react-dark' },
         { name: 'Tailwind', icon: 'skill-icons:tailwindcss-dark' },
@@ -69,7 +68,7 @@ const AboutSection: React.FC = () => {
       id: 'design',
       title: 'Design',
       description: 'Tools and platforms for designing attractive and user-friendly interfaces.',
-      accentColor: '#F43F5E', // Pink/Rose
+      accentColor: '#F43F5E',
       skills: [
         { name: 'Figma', icon: 'skill-icons:figma-dark' },
         { name: 'Photoshop', icon: 'skill-icons:photoshop' },
@@ -82,7 +81,7 @@ const AboutSection: React.FC = () => {
       id: 'devops',
       title: 'DevOps',
       description: 'Technologies and tools I use to ensure smooth development workflows and deployments.',
-      accentColor: '#3B82F6', // Blue
+      accentColor: '#3B82F6',
       skills: [
         { name: 'Scrum', icon: 'skill-icons:devto-dark' },
         { name: 'Jira', icon: 'devicon:jira' },
@@ -94,7 +93,6 @@ const AboutSection: React.FC = () => {
     },
   ];
 
-  // Get current category data
   const currentCategory = skillCategories.find(cat => cat.id === activeCategory) || skillCategories[0];
   
   return (
@@ -109,20 +107,10 @@ const AboutSection: React.FC = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto">
-        {/* Section header with staggered animation */}
-        <div 
-          className={`text-center mb-16 transition-all duration-1000 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
+        {/* Section header */}
+        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <div className="inline-flex items-center justify-center mb-4">
-            <span 
-              className="px-4 py-1.5 rounded-full text-sm font-medium bg-white/10 text-white/80"
-              style={{ 
-                boxShadow: `0 0 20px ${currentCategory.accentColor}40`,
-                transition: 'box-shadow 0.5s ease-in-out'
-              }}
-            >
+            <span className="px-4 py-1.5 rounded-full text-sm font-medium bg-white/10 text-white/80">
               Skills & Technologies
             </span>
           </div>
@@ -138,19 +126,13 @@ const AboutSection: React.FC = () => {
         </div>
 
         {/* Category navigation */}
-        <div 
-          className={`mb-12 transition-all duration-1000 delay-200 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <div className="relative flex justify-center mb-8 overflow-x-auto pb-2 hide-scrollbar">
+        <div className={`mb-12 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="relative flex justify-center mb-8 overflow-x-auto pb-2 scrollbar-hide">
             <div className="flex space-x-2 sm:space-x-4 px-2">
-              {skillCategories.map((category, index) => (
+              {skillCategories.map((category) => (
                 <button
                   key={category.id}
-                  onClick={() => {
-                    setActiveCategory(category.id);
-                  }}
+                  onClick={() => setActiveCategory(category.id)}
                   className={`
                     relative px-5 py-2.5 rounded-full whitespace-nowrap
                     text-sm sm:text-base font-medium transition-all duration-300
@@ -172,12 +154,7 @@ const AboutSection: React.FC = () => {
                   
                   {/* Active indicator dot */}
                   {activeCategory === category.id && (
-                    <span 
-                      className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-white"
-                      style={{ 
-                        boxShadow: `0 0 8px 2px ${category.accentColor}`,
-                      }}
-                    ></span>
+                    <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-white"></span>
                   )}
                 </button>
               ))}
@@ -185,12 +162,7 @@ const AboutSection: React.FC = () => {
           </div>
 
           {/* Description area */}
-          <div 
-            className="text-center mx-auto max-w-2xl px-4 transition-opacity duration-300"
-            style={{ 
-              opacity: 1,
-            }}
-          >
+          <div className="text-center mx-auto max-w-2xl px-4">
             <p className="text-white/70 text-sm sm:text-base italic">
               {currentCategory.description}
             </p>
@@ -198,73 +170,36 @@ const AboutSection: React.FC = () => {
         </div>
 
         {/* Skills display */}
-        <div 
-          className={`transition-all duration-1000 delay-400 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <div 
-            className="relative rounded-2xl overflow-hidden border border-white/10"
-            style={{ 
-              background: 'linear-gradient(to bottom right, rgba(255,255,255,0.05), transparent)',
-              backdropFilter: 'blur(12px)',
-            }}
-          >
-            {/* Background glow effect */}
-            <div 
-              className="absolute inset-0 opacity-20 transition-opacity duration-500"
-              style={{ 
-                background: `radial-gradient(circle at 50% 50%, ${currentCategory.accentColor}40 0%, transparent 70%)`,
-              }}
-            ></div>
-
+        <div className={`transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5">
             {/* Skills grid */}
             <div className="relative py-8 px-4 md:p-10">
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 md:gap-8">
-                {currentCategory.skills.map((skill, idx) => (
+                {currentCategory.skills.map((skill) => (
                   <div
                     key={`${currentCategory.id}-${skill.name}`}
-                    className={`skill-item transform transition-all duration-500`}
-                    style={{
-                      transitionDelay: `${Math.min(idx * 100, 500)}ms`,
-                      opacity: isVisible ? 1 : 0,
-                      transform: isVisible ? 'translateY(0)' : 'translateY(10px)'
-                    }}
+                    className="transition-all duration-300"
+                    onMouseEnter={() => setHoveredSkill(skill.name)}
+                    onMouseLeave={() => setHoveredSkill(null)}
                   >
-                    <div 
-                      className="flex flex-col items-center group"
-                      onMouseEnter={() => setHoveredSkill(skill.name)}
-                      onMouseLeave={() => setHoveredSkill(null)}
-                    >
-                      <div 
-                        className="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-2xl mb-3 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg border border-white/10 overflow-hidden"
-                        style={{ 
-                          boxShadow: `0 4px 20px -5px ${currentCategory.accentColor}30`,
-                        }}
-                      >
+                    <div className="flex flex-col items-center group">
+                      <div className={`
+                        relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-2xl mb-3 
+                        bg-white/10 border border-white/10 overflow-hidden transition-all duration-300
+                        ${hoveredSkill === skill.name ? 'scale-110 shadow-lg' : ''}
+                      `}
+                      style={{ 
+                        boxShadow: hoveredSkill === skill.name ? `0 4px 20px -5px ${currentCategory.accentColor}30` : '',
+                      }}>
                         {/* Icon */}
                         {skill.icon && (
                           <Icon 
                             icon={skill.icon} 
-                            className={`text-3xl sm:text-4xl transition-all duration-300 group-hover:scale-110 z-10 ${
-                              hoveredSkill === skill.name ? 'text-white' : 'text-white/80'
+                            className={`text-3xl sm:text-4xl transition-all duration-300 ${
+                              hoveredSkill === skill.name ? 'scale-110 text-white' : 'text-white/80'
                             }`}
                           />
                         )}
-                        
-                        {/* Hover effect */}
-                        <div 
-                          className={`absolute inset-0 transition-opacity duration-300 ${
-                            hoveredSkill === skill.name ? 'opacity-100' : 'opacity-0'
-                          }`}
-                        >
-                          <div 
-                            className="absolute inset-0 bg-gradient-to-br" 
-                            style={{
-                              background: `radial-gradient(circle at center, ${currentCategory.accentColor}30, transparent 70%)`
-                            }}
-                          ></div>
-                        </div>
                       </div>
                       
                       {/* Skill name */}
@@ -279,7 +214,7 @@ const AboutSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Mobile swipe indicator at the bottom */}
+            {/* Mobile swipe indicator */}
             <div className="md:hidden flex justify-center pb-4 text-white/40 text-xs">
               <span className="flex items-center space-x-1">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -294,12 +229,8 @@ const AboutSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Additional experience section */}
-        <div 
-          className={`mt-16 text-center transition-all duration-1000 delay-600 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
+        {/* Call to action */}
+        <div className={`mt-16 text-center transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <div className="inline-flex items-center mb-2">
             <div className="h-px w-6 bg-white/20 mr-3"></div>
             <span className="text-white/60 text-sm font-medium">Let's work together</span>
@@ -313,9 +244,7 @@ const AboutSection: React.FC = () => {
           <div className="flex justify-center">
             <a 
               href="#contact" 
-              className="px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300
-                bg-white/10 hover:bg-white/15 text-white
-                focus:outline-none focus:ring-2 focus:ring-white/30"
+              className="px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-white/10 hover:bg-white/15 text-white focus:outline-none focus:ring-2 focus:ring-white/30"
             >
               Contact Me
             </a>
@@ -323,12 +252,11 @@ const AboutSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Custom CSS for animations and responsive fixes */}
       <style jsx>{`
-        .hide-scrollbar::-webkit-scrollbar {
+        .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }
-        .hide-scrollbar {
+        .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
