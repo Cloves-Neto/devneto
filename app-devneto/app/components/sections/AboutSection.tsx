@@ -19,10 +19,31 @@ interface SkillCategory {
 const AboutSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('development');
   const [isVisible, setIsVisible] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   
-  // Skill categories with their details
+  // Intersection Observer effect
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const skillCategories: SkillCategory[] = [
     {
       id: 'development',
@@ -72,28 +93,6 @@ const AboutSection: React.FC = () => {
       ],
     },
   ];
-
-  // Intersection Observer effect
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.15 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   // Get current category data
   const currentCategory = skillCategories.find(cat => cat.id === activeCategory) || skillCategories[0];
@@ -151,7 +150,6 @@ const AboutSection: React.FC = () => {
                   key={category.id}
                   onClick={() => {
                     setActiveCategory(category.id);
-                    setActiveIndex(index);
                   }}
                   className={`
                     relative px-5 py-2.5 rounded-full whitespace-nowrap
@@ -226,15 +224,20 @@ const AboutSection: React.FC = () => {
                 {currentCategory.skills.map((skill, idx) => (
                   <div
                     key={`${currentCategory.id}-${skill.name}`}
-                    className={`skill-item transform transition-all duration-500 delay-${Math.min(idx * 100, 500)}
-                      ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                    className={`skill-item transform transition-all duration-500`}
+                    style={{
+                      transitionDelay: `${Math.min(idx * 100, 500)}ms`,
+                      opacity: isVisible ? 1 : 0,
+                      transform: isVisible ? 'translateY(0)' : 'translateY(10px)'
+                    }}
                   >
-                    <div className="flex flex-col items-center group">
+                    <div 
+                      className="flex flex-col items-center group"
+                      onMouseEnter={() => setHoveredSkill(skill.name)}
+                      onMouseLeave={() => setHoveredSkill(null)}
+                    >
                       <div 
-                        className="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-2xl mb-3
-                          bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md
-                          transition-all duration-300 group-hover:scale-110
-                          group-hover:shadow-lg border border-white/10 overflow-hidden"
+                        className="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-2xl mb-3 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg border border-white/10 overflow-hidden"
                         style={{ 
                           boxShadow: `0 4px 20px -5px ${currentCategory.accentColor}30`,
                         }}
@@ -243,12 +246,18 @@ const AboutSection: React.FC = () => {
                         {skill.icon && (
                           <Icon 
                             icon={skill.icon} 
-                            className="text-3xl sm:text-4xl transition-all duration-300 group-hover:scale-110 z-10" 
+                            className={`text-3xl sm:text-4xl transition-all duration-300 group-hover:scale-110 z-10 ${
+                              hoveredSkill === skill.name ? 'text-white' : 'text-white/80'
+                            }`}
                           />
                         )}
                         
                         {/* Hover effect */}
-                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div 
+                          className={`absolute inset-0 transition-opacity duration-300 ${
+                            hoveredSkill === skill.name ? 'opacity-100' : 'opacity-0'
+                          }`}
+                        >
                           <div 
                             className="absolute inset-0 bg-gradient-to-br" 
                             style={{
@@ -259,7 +268,9 @@ const AboutSection: React.FC = () => {
                       </div>
                       
                       {/* Skill name */}
-                      <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors duration-300 text-center">
+                      <span className={`text-sm font-medium text-center transition-colors duration-300 ${
+                        hoveredSkill === skill.name ? 'text-white' : 'text-white/70'
+                      }`}>
                         {skill.name}
                       </span>
                     </div>
@@ -321,13 +332,6 @@ const AboutSection: React.FC = () => {
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
-        
-        /* Staggered animation delays by skillset index */
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
-        .delay-500 { transition-delay: 500ms; }
       `}</style>
     </section>
   );
