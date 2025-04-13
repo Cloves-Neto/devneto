@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Icon } from '@iconify/react';
 
 interface Skill {
@@ -9,48 +9,26 @@ interface Skill {
 }
 
 interface SkillCategory {
+  id: string;
   title: string;
   description: string;
   skills: Skill[];
-  color: string;
-  gradientFrom: string;
-  gradientTo: string;
+  accentColor: string;
 }
 
 const AboutSection: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<string>('Development');
-  const [isInView, setIsInView] = useState(false);
-  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string>('development');
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
   
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-    
-    const section = document.querySelector('.skills-section');
-    if (section) {
-      observer.observe(section);
-    }
-    
-    return () => {
-      if (section) {
-        observer.unobserve(section);
-      }
-    };
-  }, []);
-
+  // Skill categories with their details
   const skillCategories: SkillCategory[] = [
     {
+      id: 'development',
       title: 'Development',
       description: 'Technologies and frameworks I use to build powerful web applications.',
-      color: '#8B5CF6',
-      gradientFrom: '#7C3AED',
-      gradientTo: '#6D28D9',
+      accentColor: '#8B5CF6', // Purple
       skills: [
         { name: 'React', icon: 'skill-icons:react-dark' },
         { name: 'Tailwind', icon: 'skill-icons:tailwindcss-dark' },
@@ -67,11 +45,10 @@ const AboutSection: React.FC = () => {
       ],
     },
     {
+      id: 'design',
       title: 'Design',
       description: 'Tools and platforms for designing attractive and user-friendly interfaces.',
-      color: '#EC4899',
-      gradientFrom: '#EC4899',
-      gradientTo: '#DB2777',
+      accentColor: '#F43F5E', // Pink/Rose
       skills: [
         { name: 'Figma', icon: 'skill-icons:figma-dark' },
         { name: 'Photoshop', icon: 'skill-icons:photoshop' },
@@ -81,11 +58,10 @@ const AboutSection: React.FC = () => {
       ],
     },
     {
+      id: 'devops',
       title: 'DevOps',
       description: 'Technologies and tools I use to ensure smooth development workflows and deployments.',
-      color: '#3B82F6',
-      gradientFrom: '#3B82F6',
-      gradientTo: '#2563EB',
+      accentColor: '#3B82F6', // Blue
       skills: [
         { name: 'Scrum', icon: 'skill-icons:devto-dark' },
         { name: 'Jira', icon: 'devicon:jira' },
@@ -97,189 +73,261 @@ const AboutSection: React.FC = () => {
     },
   ];
 
+  // Intersection Observer effect
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Get current category data
+  const currentCategory = skillCategories.find(cat => cat.id === activeCategory) || skillCategories[0];
+  
   return (
-    <section className="skills-section w-full h-auto py-16 md:py-24 bg-[#0a051a] text-white px-4 overflow-hidden">
-      <div 
-        className={`max-w-6xl mx-auto transition-all duration-1000 ${
-          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-        }`}
-      >
-        <div className="space-y-8 mb-16">
-          <div className="text-center">
-            <span className="inline-block px-4 py-1 rounded-full bg-white/10 text-purple-400 text-sm font-medium mb-4">
-              My Toolbox
+    <section 
+      ref={sectionRef}
+      className="relative w-full bg-[#0a051a] text-white py-16 md:py-24 px-4 sm:px-6 overflow-hidden"
+    >
+      {/* Background decoration elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-b from-purple-600/10 to-transparent rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-t from-blue-600/10 to-transparent rounded-full blur-3xl transform -translate-x-1/3 translate-y-1/3"></div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto">
+        {/* Section header with staggered animation */}
+        <div 
+          className={`text-center mb-16 transition-all duration-1000 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="inline-flex items-center justify-center mb-4">
+            <span 
+              className="px-4 py-1.5 rounded-full text-sm font-medium bg-white/10 text-white/80"
+              style={{ 
+                boxShadow: `0 0 20px ${currentCategory.accentColor}40`,
+                transition: 'box-shadow 0.5s ease-in-out'
+              }}
+            >
+              Skills & Technologies
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Skills & Expertise</h2>
-          </div>
-
-          <div className="text-center max-w-3xl mx-auto">
-            <h3 className="text-xl text-purple-400 mb-3">Hi, I'm Cloves Neto!</h3>
-            <p className="text-lg text-white/80 leading-relaxed">
-              Freelancer, Web Designer and Full Stack Web Developer.
-              Come and see the solutions I develop and follow my work.
-              Do you want to carry out a project? Contact me to ask any questions you may have.
-            </p>
-          </div>
-        </div>
-
-        {/* Category Selector */}
-        <div className="relative mb-12">
-          <div className="flex items-center justify-center flex-wrap gap-4 mb-8">
-            {skillCategories.map((category, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveCategory(category.title)}
-                className={`
-                  relative px-6 py-3 rounded-full text-lg font-medium transition-all duration-300
-                  ${activeCategory === category.title 
-                    ? 'text-white' 
-                    : 'text-white/60 hover:text-white/90'}
-                `}
-                style={{
-                  background: activeCategory === category.title 
-                    ? `linear-gradient(135deg, ${category.gradientFrom}, ${category.gradientTo})` 
-                    : 'transparent',
-                  boxShadow: activeCategory === category.title 
-                    ? `0 10px 20px -10px ${category.color}` 
-                    : 'none'
-                }}
-              >
-                {activeCategory === category.title && (
-                  <span className="absolute inset-0 rounded-full bg-white/20 animate-pulse-subtle"></span>
-                )}
-                <span className="relative">{category.title}</span>
-              </button>
-            ))}
-          </div>
-
-          {/* Dynamic description based on active category */}
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-white/70">
-              {skillCategories.find(cat => cat.title === activeCategory)?.description}
-            </p>
-          </div>
-        </div>
-
-        {/* Skills Grid */}
-        <div className="skills-showcase relative p-6 md:p-10 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10">
-          {/* Background effect elements */}
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-3xl -z-10">
-            {skillCategories.map((category, i) => (
-              activeCategory === category.title && (
-                <div 
-                  key={i}
-                  className="absolute inset-0 transition-opacity duration-700"
-                  style={{
-                    background: `radial-gradient(circle at 30% 20%, ${category.color}30 0%, transparent 40%)`
-                  }}
-                />
-              )
-            ))}
           </div>
           
-          {/* Active skills grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
-            {skillCategories
-              .find(cat => cat.title === activeCategory)
-              ?.skills.map((skill, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center justify-center gap-3 transition-all duration-300"
-                  onMouseEnter={() => setHoveredSkill(skill.name)}
-                  onMouseLeave={() => setHoveredSkill(null)}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">My Expertise</h2>
+          
+          <div className="max-w-2xl mx-auto">
+            <p className="text-white/70 text-base sm:text-lg">
+              Hi, I'm Cloves Neto! Freelancer, Web Designer and Full Stack Web Developer.
+              Here are the tools and technologies I use to bring your ideas to life.
+            </p>
+          </div>
+        </div>
+
+        {/* Category navigation */}
+        <div 
+          className={`mb-12 transition-all duration-1000 delay-200 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="relative flex justify-center mb-8 overflow-x-auto pb-2 hide-scrollbar">
+            <div className="flex space-x-2 sm:space-x-4 px-2">
+              {skillCategories.map((category, index) => (
+                <button
+                  key={category.id}
+                  onClick={() => {
+                    setActiveCategory(category.id);
+                    setActiveIndex(index);
+                  }}
+                  className={`
+                    relative px-5 py-2.5 rounded-full whitespace-nowrap
+                    text-sm sm:text-base font-medium transition-all duration-300
+                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0a051a] 
+                    ${activeCategory === category.id 
+                      ? 'text-white shadow-lg' 
+                      : 'text-white/60 hover:text-white/90 bg-white/5 hover:bg-white/10'}
+                  `}
+                  style={{
+                    background: activeCategory === category.id 
+                      ? `linear-gradient(135deg, ${category.accentColor}90, ${category.accentColor}60)` 
+                      : '',
+                    boxShadow: activeCategory === category.id 
+                      ? `0 8px 16px -4px ${category.accentColor}40` 
+                      : ''
+                  }}
                 >
-                  <div 
-                    className={`
-                      relative w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl flex items-center justify-center
-                      transition-all duration-300 group overflow-hidden
-                      ${hoveredSkill === skill.name 
-                        ? 'transform scale-110 shadow-lg' 
-                        : 'bg-white/10 hover:bg-white/15'}
-                    `}
-                    style={{
-                      background: hoveredSkill === skill.name 
-                        ? `linear-gradient(135deg, ${
-                            skillCategories.find(cat => cat.title === activeCategory)?.gradientFrom
-                          }50, ${
-                            skillCategories.find(cat => cat.title === activeCategory)?.gradientTo
-                          }50)` 
-                        : '',
-                      boxShadow: hoveredSkill === skill.name 
-                        ? `0 10px 25px -5px ${
-                            skillCategories.find(cat => cat.title === activeCategory)?.color
-                          }40` 
-                        : ''
-                    }}
-                  >
-                    {skill.icon && (
-                      <Icon 
-                        icon={skill.icon} 
-                        className={`
-                          transition-all duration-300
-                          ${hoveredSkill === skill.name 
-                            ? 'text-4xl md:text-5xl' 
-                            : 'text-3xl md:text-4xl opacity-80'}
-                        `} 
-                      />
-                    )}
-                    
-                    {/* Animated background */}
-                    {hoveredSkill === skill.name && (
-                      <div className="absolute inset-0 -z-10">
-                        <div className="absolute top-0 left-0 w-full h-full animate-move-subtle opacity-30"></div>
-                        <div 
-                          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full blur-2xl"
-                          style={{
-                            background: skillCategories.find(cat => cat.title === activeCategory)?.color,
-                            animation: 'pulse-glow 2s infinite'
-                          }}
-                        ></div>
-                      </div>
-                    )}
-                  </div>
+                  {category.title}
                   
-                  <span 
-                    className={`
-                      text-sm font-medium text-center transition-all duration-300
-                      ${hoveredSkill === skill.name ? 'text-white' : 'text-white/70'}
-                    `}
+                  {/* Active indicator dot */}
+                  {activeCategory === category.id && (
+                    <span 
+                      className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-white"
+                      style={{ 
+                        boxShadow: `0 0 8px 2px ${category.accentColor}`,
+                      }}
+                    ></span>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Description area */}
+          <div 
+            className="text-center mx-auto max-w-2xl px-4 transition-opacity duration-300"
+            style={{ 
+              opacity: 1,
+            }}
+          >
+            <p className="text-white/70 text-sm sm:text-base italic">
+              {currentCategory.description}
+            </p>
+          </div>
+        </div>
+
+        {/* Skills display */}
+        <div 
+          className={`transition-all duration-1000 delay-400 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div 
+            className="relative rounded-2xl overflow-hidden border border-white/10"
+            style={{ 
+              background: 'linear-gradient(to bottom right, rgba(255,255,255,0.05), transparent)',
+              backdropFilter: 'blur(12px)',
+            }}
+          >
+            {/* Background glow effect */}
+            <div 
+              className="absolute inset-0 opacity-20 transition-opacity duration-500"
+              style={{ 
+                background: `radial-gradient(circle at 50% 50%, ${currentCategory.accentColor}40 0%, transparent 70%)`,
+              }}
+            ></div>
+
+            {/* Skills grid */}
+            <div className="relative py-8 px-4 md:p-10">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 md:gap-8">
+                {currentCategory.skills.map((skill, idx) => (
+                  <div
+                    key={`${currentCategory.id}-${skill.name}`}
+                    className={`skill-item transform transition-all duration-500 delay-${Math.min(idx * 100, 500)}
+                      ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                   >
-                    {skill.name}
-                  </span>
-                </div>
-              ))
-            }
+                    <div className="flex flex-col items-center group">
+                      <div 
+                        className="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-2xl mb-3
+                          bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md
+                          transition-all duration-300 group-hover:scale-110
+                          group-hover:shadow-lg border border-white/10 overflow-hidden"
+                        style={{ 
+                          boxShadow: `0 4px 20px -5px ${currentCategory.accentColor}30`,
+                        }}
+                      >
+                        {/* Icon */}
+                        {skill.icon && (
+                          <Icon 
+                            icon={skill.icon} 
+                            className="text-3xl sm:text-4xl transition-all duration-300 group-hover:scale-110 z-10" 
+                          />
+                        )}
+                        
+                        {/* Hover effect */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div 
+                            className="absolute inset-0 bg-gradient-to-br" 
+                            style={{
+                              background: `radial-gradient(circle at center, ${currentCategory.accentColor}30, transparent 70%)`
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                      
+                      {/* Skill name */}
+                      <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors duration-300 text-center">
+                        {skill.name}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile swipe indicator at the bottom */}
+            <div className="md:hidden flex justify-center pb-4 text-white/40 text-xs">
+              <span className="flex items-center space-x-1">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                </svg>
+                <span>Swipe to see more</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Additional experience section */}
+        <div 
+          className={`mt-16 text-center transition-all duration-1000 delay-600 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="inline-flex items-center mb-2">
+            <div className="h-px w-6 bg-white/20 mr-3"></div>
+            <span className="text-white/60 text-sm font-medium">Let's work together</span>
+            <div className="h-px w-6 bg-white/20 ml-3"></div>
+          </div>
+          
+          <h3 className="text-xl sm:text-2xl font-bold mb-4">
+            Want to see these skills in action?
+          </h3>
+          
+          <div className="flex justify-center">
+            <a 
+              href="#contact" 
+              className="px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300
+                bg-white/10 hover:bg-white/15 text-white
+                focus:outline-none focus:ring-2 focus:ring-white/30"
+            >
+              Contact Me
+            </a>
           </div>
         </div>
       </div>
 
-      {/* Custom CSS for animations */}
+      {/* Custom CSS for animations and responsive fixes */}
       <style jsx>{`
-        @keyframes pulse-subtle {
-          0%, 100% { opacity: 0.7; }
-          50% { opacity: 1; }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
         
-        @keyframes pulse-glow {
-          0%, 100% { transform: scale(0.8); opacity: 0.3; }
-          50% { transform: scale(1.2); opacity: 0.6; }
-        }
-        
-        @keyframes move-subtle {
-          0% { transform: translateY(0) translateX(0); }
-          25% { transform: translateY(-5px) translateX(5px); }
-          50% { transform: translateY(0) translateX(10px); }
-          75% { transform: translateY(5px) translateX(5px); }
-          100% { transform: translateY(0) translateX(0); }
-        }
-        
-        .animate-pulse-subtle {
-          animation: pulse-subtle 2s infinite;
-        }
-        
-        .animate-move-subtle {
-          animation: move-subtle 10s infinite;
-        }
+        /* Staggered animation delays by skillset index */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+        .delay-500 { transition-delay: 500ms; }
       `}</style>
     </section>
   );
