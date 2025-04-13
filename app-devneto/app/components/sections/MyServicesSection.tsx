@@ -1,7 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface Service {
   title: React.ReactNode;
@@ -12,9 +11,9 @@ interface Service {
 const ServicesSection: React.FC = () => {
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   
   useEffect(() => {
-    // Simple intersection observer to trigger animations when scrolled into view
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -23,11 +22,14 @@ const ServicesSection: React.FC = () => {
       });
     }, { threshold: 0.1 });
     
-    const section = document.querySelector('.services-section');
-    if (section) observer.observe(section);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
     
     return () => {
-      if (section) observer.unobserve(section);
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
     };
   }, []);
   
@@ -82,38 +84,14 @@ const ServicesSection: React.FC = () => {
     },
   ];
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
   return (
-    <section className="services-section bg-[#0a051a] w-full py-16 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section 
+      ref={sectionRef}
+      className={`services-section bg-[#0a051a] w-full py-16 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+    >
       <div className="max-w-screen-xl mx-auto">
         {/* Section Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
+        <div className={`mb-16 transition-all duration-700 delay-100 ${isVisible ? 'translate-y-0' : 'translate-y-10'}`}>
           <div className="flex flex-col items-center">
             <span className="text-purple-500 text-sm font-medium tracking-wider uppercase mb-3">
               my services
@@ -132,22 +110,20 @@ const ServicesSection: React.FC = () => {
               brand and turn your vision into reality!
             </p>
           </div>
-        </motion.div>
+        </div>
 
         {/* Services Grid */}
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 lg:gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {services.map((service, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={itemVariants}
-              className="group"
+              className={`group service-item service-item-${index} ${isVisible ? 'is-visible' : ''}`}
               onMouseEnter={() => setActiveCard(index)}
               onMouseLeave={() => setActiveCard(null)}
+              style={{
+                // Apply staggered animation delay based on index
+                transitionDelay: `${100 + index * 150}ms`,
+              }}
             >
               <div 
                 className={`
@@ -203,10 +179,61 @@ const ServicesSection: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
+        
+        {/* Mobile scroll indicator */}
+        <div className="mt-6 text-center md:hidden">
+          <p className="text-white/50 text-sm">Swipe to explore all services</p>
+        </div>
+
+        {/* Call to action */}
+        <div className={`mt-16 text-center transition-all duration-700 delay-100 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <a href="#contact" className="inline-flex items-center justify-center px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-full transition-colors duration-300 shadow-lg shadow-purple-600/20 font-medium">
+            Start a Project
+            <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
       </div>
+
+      {/* CSS for animations */}
+      <style jsx>{`
+        .service-item {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .service-item.is-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+          .grid {
+            scroll-snap-type: x mandatory;
+            grid-auto-flow: column;
+            grid-auto-columns: 85%;
+            overflow-x: auto;
+            scroll-padding: 1rem;
+            padding: 1rem;
+            margin-left: -1rem;
+            margin-right: -1rem;
+            -webkit-overflow-scrolling: touch;
+          }
+          
+          .grid::-webkit-scrollbar {
+            display: none;
+          }
+          
+          .grid > div {
+            scroll-snap-align: start;
+          }
+        }
+      `}</style>
     </section>
   );
 };
