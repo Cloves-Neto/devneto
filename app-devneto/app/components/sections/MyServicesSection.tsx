@@ -3,9 +3,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 interface Service {
-  title: React.ReactNode;
+  title: string;
+  subtitle: string;
   description: string;
-  image: string;
+  icon: string;
+  color: string;
 }
 
 const ServicesSection: React.FC = () => {
@@ -35,81 +37,60 @@ const ServicesSection: React.FC = () => {
   
   const services: Service[] = [
     {
-      title: (
-        <>
-          DEVELOPMENT 
-          <br />
-          & SEO STRATEGY
-        </>
-      ),
-      description:
-        "My services include development of custom websites that not only meet the specific needs of your business, but are also optimized for search engine performance with effective SEO strategies to increase your brand visibility, drive qualified traffic, and improve conversion rates.",
-      image: '/images/card-1.svg',
+      title: "DEVELOPMENT",
+      subtitle: "& SEO STRATEGY",
+      description: "Custom websites optimized for search engines. Boost visibility, drive qualified traffic, and improve conversion rates with strategic SEO implementation.",
+      icon: "mdi:code-tags",
+      color: "#8B5CF6" // Purple
     },
     {
-      title: (
-        <>
-          CREATIVE DESIGN 
-          <br />
-          & RESPONSIVE WEBSITE
-        </>
-      ),
-      description:
-        "I offer creative design and responsive website development services, focusing on creating compelling and functional visuals that capture the essence of your brand. My goal is to transform your ideas into impactful designs that not only grab attention but also provide a seamless user experience across all devices.",
-      image: '/images/card-2.svg',
+      title: "CREATIVE DESIGN",
+      subtitle: "& RESPONSIVE WEBSITES",
+      description: "Compelling visuals that capture your brand essence. Responsive designs that provide seamless experiences across all devices.",
+      icon: "mdi:palette-outline",
+      color: "#EC4899" // Pink
     },
     {
-      title: (
-        <>
-          DIGITAL DESIGN
-          <br />
-          & CREATIVE CONTENT
-        </>
-      ),
-      description:
-        "I create digital designs and creative content to strengthen your brand and online presence. I offer website prototypes, social media post designs, in-bio links, banners, and other website and social media edits. Each project is designed to convey your message clearly and impactfully, generating engagement and reinforcing your brand's visual identity.",
-      image: '/images/card-4.svg',
+      title: "DIGITAL DESIGN",
+      subtitle: "& CREATIVE CONTENT",
+      description: "Strategic digital assets that strengthen your brand online. From prototypes to social media designs that engage your audience effectively.",
+      icon: "mdi:pencil-ruler",
+      color: "#3B82F6" // Blue
     },
     {
-      title: (
-        <>
-          TECHNICAL SUPPORT
-          <br />
-          & MAINTENANCE
-        </>
-      ),
-      description:
-        "Experienced in delivering ongoing technical support and maintenance to ensure seamless website functionality. Proficient in performing regular updates, troubleshooting, performance monitoring, and implementing security patches. Adept at optimizing website performance and ensuring up-to-date, secure, and uninterrupted operations, enabling businesses to focus on growth and success.",
-      image: '/images/card-3.svg',
-    },
+      title: "TECHNICAL SUPPORT",
+      subtitle: "& MAINTENANCE",
+      description: "Ongoing technical support ensuring your website runs smoothly. Regular updates, troubleshooting, and security implementations.",
+      icon: "mdi:tools",
+      color: "#10B981" // Green
+    }
   ];
 
   return (
     <section 
       ref={sectionRef}
-      className={`services-section bg-[#0a051a] w-full py-16 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className="relative bg-[#0a051a] w-full py-16 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      <div className="max-w-screen-xl mx-auto">
+      {/* Background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-b from-purple-600/10 to-transparent rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-t from-blue-600/10 to-transparent rounded-full blur-3xl transform -translate-x-1/3 translate-y-1/3"></div>
+      </div>
+      
+      <div className="relative max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className={`mb-16 transition-all duration-700 delay-100 ${isVisible ? 'translate-y-0' : 'translate-y-10'}`}>
-          <div className="flex flex-col items-center">
-            <span className="text-purple-500 text-sm font-medium tracking-wider uppercase mb-3">
-              my services
-            </span>
-            <div className="w-12 h-1 bg-purple-500 mb-8 rounded-full"></div>
-          </div>
-
-          <div className="space-y-6 max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-              What can I do for you
-            </h2>
-            <p className="text-white/80 text-base md:text-lg leading-relaxed">
-              Whether you need a sleek website, a full-stack solution, or a
-              captivating user interface, I'm here to transform your ideas into
-              powerful digital experiences. Let's work together to elevate your
-              brand and turn your vision into reality!
-            </p>
-          </div>
+        <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <span className="inline-block px-4 py-1.5 bg-white/10 text-purple-400 font-medium rounded-full text-sm mb-4">
+            My Services
+          </span>
+          
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+            What can I do for you
+          </h2>
+          
+          <p className="text-white/70 text-base md:text-lg max-w-2xl mx-auto">
+            Transform your ideas into powerful digital experiences. Let's work together to elevate your brand and bring your vision to life.
+          </p>
         </div>
 
         {/* Services Grid */}
@@ -117,66 +98,98 @@ const ServicesSection: React.FC = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className={`group service-item service-item-${index} ${isVisible ? 'is-visible' : ''}`}
+              className="service-card"
               onMouseEnter={() => setActiveCard(index)}
               onMouseLeave={() => setActiveCard(null)}
               style={{
-                // Apply staggered animation delay based on index
-                transitionDelay: `${100 + index * 150}ms`,
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+                transition: `all 0.5s ease ${100 + index * 100}ms`
               }}
             >
               <div 
                 className={`
-                  h-auto min-h-80 md:h-96 rounded-xl overflow-hidden relative
-                  border border-purple-900/30 transition-all duration-300
-                  ${activeCard === index ? 'border-white shadow-lg shadow-purple-900/20' : 'hover:border-purple-500'}
+                  h-full p-6 md:p-8 rounded-2xl backdrop-blur-sm transition-all duration-300
+                  border border-white/10 bg-white/5 hover:bg-white/10
+                  ${activeCard === index ? 'shadow-lg' : ''}
                 `}
+                style={{
+                  boxShadow: activeCard === index ? `0 8px 32px -8px ${service.color}40` : ''
+                }}
               >
-                {/* Background Image with Overlay */}
-                <div 
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${service.image})` }}
-                />
-                <div className={`
-                  absolute inset-0 transition-all duration-500
-                  ${activeCard === index ? 'bg-slate-950/90' : 'bg-purple-900/80 hover:bg-slate-950/85'}
-                `}/>
-                
-                {/* Decorative Elements */}
-                <div className={`
-                  absolute top-4 right-4 flex items-center space-x-2 transition-opacity duration-300
-                  ${activeCard === index ? 'opacity-100' : 'opacity-0'}
-                `}>
-                  <span className="w-3 h-3 bg-red-500 rounded-full" />
-                  <span className="w-3 h-3 bg-yellow-400 rounded-full" />
-                  <span className="w-3 h-3 bg-green-400 rounded-full" />
+                {/* Header with icon */}
+                <div className="flex items-start mb-6">
+                  <div 
+                    className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center mr-4"
+                    style={{ 
+                      background: `linear-gradient(135deg, ${service.color}30, ${service.color}10)`,
+                      border: `1px solid ${service.color}30`
+                    }}
+                  >
+                    <span className="text-2xl" style={{ color: service.color }}>
+                      <i className={service.icon}></i>
+                    </span>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-bold text-white">
+                      {service.title}
+                    </h3>
+                    <p className="text-white/60 text-sm font-medium">
+                      {service.subtitle}
+                    </p>
+                  </div>
                 </div>
                 
-                {/* Content */}
-                <div className="relative z-10 p-6 md:p-8 h-full flex flex-col">
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-4 transition-transform duration-300 group-hover:-translate-y-1">
-                    {service.title}
-                  </h3>
-                  
-                  <p className={`
-                    text-gray-200/90 text-sm md:text-base font-normal transition-all duration-500
-                    ${activeCard === index ? 'opacity-100' : 'group-hover:opacity-100 opacity-80'}
-                  `}>
-                    {service.description}
-                  </p>
-                  
-                  {/* Call to action - appears on hover */}
-                  <div className={`
-                    mt-auto pt-4 opacity-0 transform translate-y-4 transition-all duration-300
-                    ${activeCard === index ? 'opacity-100 translate-y-0' : 'group-hover:opacity-100 group-hover:translate-y-0'}
-                  `}>
-                    <button className="text-purple-400 hover:text-white text-sm font-medium flex items-center">
-                      Learn more
-                      <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                {/* Description */}
+                <p className="text-white/80 text-base mb-6">
+                  {service.description}
+                </p>
+                
+                {/* Features list */}
+                <ul className="space-y-2 mb-6">
+                  {[1, 2, 3].map((_, i) => (
+                    <li 
+                      key={i} 
+                      className={`flex items-center text-sm transition-opacity duration-300 ${
+                        activeCard === index ? 'opacity-100' : 'opacity-70'
+                      }`}
+                    >
+                      <svg 
+                        className="w-4 h-4 mr-2 flex-shrink-0" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        style={{ color: service.color }}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                    </button>
-                  </div>
+                      <span className="text-white/80">
+                        {i === 0 ? 'Strategic approach' : i === 1 ? 'Custom solutions' : 'Modern techniques'}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                
+                {/* Action button */}
+                <div className="mt-auto">
+                  <button 
+                    className={`
+                      group flex items-center text-sm font-medium transition-all duration-300
+                      ${activeCard === index ? `text-${service.color.slice(1)}` : 'text-white/60 hover:text-white/90'}
+                    `}
+                    style={{ color: activeCard === index ? service.color : '' }}
+                  >
+                    Explore service
+                    <svg 
+                      className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -185,12 +198,27 @@ const ServicesSection: React.FC = () => {
         
         {/* Mobile scroll indicator */}
         <div className="mt-6 text-center md:hidden">
-          <p className="text-white/50 text-sm">Swipe to explore all services</p>
+          <p className="text-white/50 text-sm flex items-center justify-center">
+            <svg className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+            Swipe to explore all services
+          </p>
         </div>
 
         {/* Call to action */}
-        <div className={`mt-16 text-center transition-all duration-700 delay-100 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <a href="#contact" className="inline-flex items-center justify-center px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-full transition-colors duration-300 shadow-lg shadow-purple-600/20 font-medium">
+        <div 
+          className="mt-16 text-center"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'all 0.7s ease 500ms'
+          }}
+        >
+          <a 
+            href="#contact" 
+            className="inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-700 hover:to-purple-900 text-white rounded-full transition-all duration-300 shadow-lg hover:shadow-xl shadow-purple-600/20 font-medium"
+          >
             Start a Project
             <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -199,19 +227,8 @@ const ServicesSection: React.FC = () => {
         </div>
       </div>
 
-      {/* CSS for animations */}
+      {/* CSS for mobile scrolling */}
       <style jsx>{`
-        .service-item {
-          opacity: 0;
-          transform: translateY(30px);
-          transition: opacity 0.7s ease, transform 0.6s ease;
-        }
-        
-        .service-item.is-visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        
         @media (max-width: 768px) {
           .grid {
             scroll-snap-type: x mandatory;
