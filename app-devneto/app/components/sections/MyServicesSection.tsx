@@ -204,7 +204,7 @@ const ServicesSection: React.FC = () => {
         .service-item {
           opacity: 0;
           transform: translateY(30px);
-          transition: opacity 0.6s ease, transform 0.6s ease;
+          transition: opacity 0.7s ease, transform 0.6s ease;
         }
         
         .service-item.is-visible {
