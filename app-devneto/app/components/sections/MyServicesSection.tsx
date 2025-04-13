@@ -39,29 +39,29 @@ const ServicesSection: React.FC = () => {
     {
       title: "DEVELOPMENT",
       subtitle: "& SEO STRATEGY",
-      description: "Custom websites optimized for search engines. Boost visibility, drive qualified traffic, and improve conversion rates with strategic SEO implementation.",
-      icon: "mdi:code-tags",
+      description: "Custom websites optimized for search engines. Boost visibility, drive qualified traffic, and improve conversion rates.",
+      icon: "code-tags",
       color: "#8B5CF6" // Purple
     },
     {
       title: "CREATIVE DESIGN",
       subtitle: "& RESPONSIVE WEBSITES",
       description: "Compelling visuals that capture your brand essence. Responsive designs that provide seamless experiences across all devices.",
-      icon: "mdi:palette-outline",
+      icon: "palette-outline",
       color: "#EC4899" // Pink
     },
     {
       title: "DIGITAL DESIGN",
       subtitle: "& CREATIVE CONTENT",
-      description: "Strategic digital assets that strengthen your brand online. From prototypes to social media designs that engage your audience effectively.",
-      icon: "mdi:pencil-ruler",
+      description: "Strategic digital assets that strengthen your brand online. From prototypes to social media designs that engage effectively.",
+      icon: "pencil-ruler",
       color: "#3B82F6" // Blue
     },
     {
       title: "TECHNICAL SUPPORT",
       subtitle: "& MAINTENANCE",
       description: "Ongoing technical support ensuring your website runs smoothly. Regular updates, troubleshooting, and security implementations.",
-      icon: "mdi:tools",
+      icon: "tools",
       color: "#10B981" // Green
     }
   ];
@@ -94,7 +94,7 @@ const ServicesSection: React.FC = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
           {services.map((service, index) => (
             <div
               key={index}
@@ -107,89 +107,115 @@ const ServicesSection: React.FC = () => {
                 transition: `all 0.5s ease ${100 + index * 100}ms`
               }}
             >
-              <div 
-                className={`
-                  h-full p-6 md:p-8 rounded-2xl backdrop-blur-sm transition-all duration-300
-                  border border-white/10 bg-white/5 hover:bg-white/10
-                  ${activeCard === index ? 'shadow-lg' : ''}
-                `}
-                style={{
-                  boxShadow: activeCard === index ? `0 8px 32px -8px ${service.color}40` : ''
-                }}
-              >
-                {/* Header with icon */}
-                <div className="flex items-start mb-6">
-                  <div 
-                    className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center mr-4"
-                    style={{ 
-                      background: `linear-gradient(135deg, ${service.color}30, ${service.color}10)`,
-                      border: `1px solid ${service.color}30`
-                    }}
-                  >
-                    <span className="text-2xl" style={{ color: service.color }}>
-                      <i className={service.icon}></i>
-                    </span>
+              <div className="aspect-w-1 aspect-h-1 w-full">
+                <div 
+                  className={`
+                    h-full w-full p-6 rounded-2xl backdrop-blur-sm transition-all duration-300
+                    border border-white/10 bg-white/5 hover:bg-white/10 flex flex-col
+                    ${activeCard === index ? 'shadow-lg' : ''}
+                  `}
+                  style={{
+                    boxShadow: activeCard === index ? `0 8px 32px -8px ${service.color}40` : ''
+                  }}
+                >
+                  {/* Header with icon */}
+                  <div className="flex items-start space-x-4 mb-4">
+                    <div 
+                      className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
+                      style={{ 
+                        background: `linear-gradient(135deg, ${service.color}30, ${service.color}10)`,
+                        border: `1px solid ${service.color}30`
+                      }}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: service.color }}>
+                        {service.icon === 'code-tags' && (
+                          <>
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                          </>
+                        )}
+                        {service.icon === 'palette-outline' && (
+                          <>
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <circle cx="12" cy="8" r="2"></circle>
+                            <circle cx="8" cy="14" r="2"></circle>
+                            <circle cx="16" cy="14" r="2"></circle>
+                          </>
+                        )}
+                        {service.icon === 'pencil-ruler' && (
+                          <>
+                            <path d="M14 2L18 6L7 17L3 17L3 13L14 2Z"></path>
+                            <path d="M3 22L21 22"></path>
+                          </>
+                        )}
+                        {service.icon === 'tools' && (
+                          <>
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                          </>
+                        )}
+                      </svg>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-lg font-bold text-white leading-tight">
+                        {service.title}
+                      </h3>
+                      <p className="text-white/60 text-sm font-medium">
+                        {service.subtitle}
+                      </p>
+                    </div>
                   </div>
                   
-                  <div>
-                    <h3 className="text-xl font-bold text-white">
-                      {service.title}
-                    </h3>
-                    <p className="text-white/60 text-sm font-medium">
-                      {service.subtitle}
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Description */}
-                <p className="text-white/80 text-base mb-6">
-                  {service.description}
-                </p>
-                
-                {/* Features list */}
-                <ul className="space-y-2 mb-6">
-                  {[1, 2, 3].map((_, i) => (
-                    <li 
-                      key={i} 
-                      className={`flex items-center text-sm transition-opacity duration-300 ${
-                        activeCard === index ? 'opacity-100' : 'opacity-70'
-                      }`}
-                    >
-                      <svg 
-                        className="w-4 h-4 mr-2 flex-shrink-0" 
-                        viewBox="0 0 24 24" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        style={{ color: service.color }}
+                  {/* Description */}
+                  <p className="text-white/80 text-sm mb-4 flex-grow">
+                    {service.description}
+                  </p>
+                  
+                  {/* Feature list */}
+                  <div className="space-y-2 mb-4">
+                    {[
+                      index === 0 ? "SEO optimization" : index === 1 ? "User-centric design" : index === 2 ? "Brand consistency" : "Security updates",
+                      index === 0 ? "Performance focus" : index === 1 ? "Mobile-first approach" : index === 2 ? "Engagement strategy" : "Regular maintenance"
+                    ].map((feature, i) => (
+                      <div 
+                        key={i} 
+                        className={`flex items-center text-xs transition-opacity duration-300 ${
+                          activeCard === index ? 'opacity-100' : 'opacity-70'
+                        }`}
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-white/80">
-                        {i === 0 ? 'Strategic approach' : i === 1 ? 'Custom solutions' : 'Modern techniques'}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                
-                {/* Action button */}
-                <div className="mt-auto">
-                  <button 
-                    className={`
-                      group flex items-center text-sm font-medium transition-all duration-300
-                      ${activeCard === index ? `text-${service.color.slice(1)}` : 'text-white/60 hover:text-white/90'}
-                    `}
-                    style={{ color: activeCard === index ? service.color : '' }}
-                  >
-                    Explore service
-                    <svg 
-                      className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
+                        <svg 
+                          className="w-4 h-4 mr-2 flex-shrink-0" 
+                          viewBox="0 0 24 24" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          style={{ color: service.color }}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span className="text-white/80">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* Action button */}
+                  <div className="mt-auto pt-2">
+                    <button 
+                      className="group flex items-center text-sm font-medium transition-all duration-300 text-white/60 hover:text-white/90"
+                      style={{ color: activeCard === index ? service.color : '' }}
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </button>
+                      Learn more
+                      <svg 
+                        className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -197,7 +223,7 @@ const ServicesSection: React.FC = () => {
         </div>
         
         {/* Mobile scroll indicator */}
-        <div className="mt-6 text-center md:hidden">
+        <div className="mt-6 text-center sm:hidden">
           <p className="text-white/50 text-sm flex items-center justify-center">
             <svg className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -227,9 +253,26 @@ const ServicesSection: React.FC = () => {
         </div>
       </div>
 
-      {/* CSS for mobile scrolling */}
+      {/* CSS for aspect ratio and mobile scrolling */}
       <style jsx>{`
-        @media (max-width: 768px) {
+        .aspect-w-1 {
+          position: relative;
+          padding-bottom: 100%;
+        }
+        
+        .aspect-h-1 {
+          position: relative;
+        }
+        
+        .aspect-w-1 > div {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+        
+        @media (max-width: 639px) {
           .grid {
             scroll-snap-type: x mandatory;
             grid-auto-flow: column;
